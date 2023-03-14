@@ -3,6 +3,8 @@ import {Formik, Form, useField, FieldHookConfig} from 'formik'
 import {BookItemType} from '../Catalog/BookItems/BookItem/BookItem'
 import * as Yup from 'yup'
 import classNames from 'classnames/bind'
+import {useDispatch} from 'react-redux'
+import {addBook} from '../../redux/reducers/books'
 
 const BlockBox: React.FC<{title: string; errorMessage: string; children: React.ReactNode}> = ({
 	title,
@@ -34,17 +36,13 @@ const FormikCustomInput = (props: FieldHookConfig<string>) => {
 
 const FormikCustomTextarea = (props: FieldHookConfig<string>) => {
 	const [field] = useField(props)
-	const title = props.title
 
 	return (
-		<div className={s.block}>
-			<div className={s.label}>{title}</div>
-			<textarea
-				className={s.textarea}
-				{...field}
-				placeholder={props.placeholder}
-			/>
-		</div>
+		<textarea
+			className={s.textarea}
+			{...field}
+			placeholder={props.placeholder}
+		/>
 	)
 }
 
@@ -67,7 +65,9 @@ const SignupSchema = Yup.object().shape({
 	description: Yup.string().required('Description is required'),
 })
 
-const ModalForm = () => {
+const ModalForm: React.FC<{setShowModal: (a: boolean) => void}> = ({setShowModal}) => {
+	const dispatch = useDispatch()
+
 	return (
 		<Formik
 			initialValues={
@@ -84,8 +84,8 @@ const ModalForm = () => {
 			validationSchema={SignupSchema}
 			onSubmit={(values, {setSubmitting}) => {
 				setTimeout(() => {
-					alert(JSON.stringify(values, null, 2))
-
+					dispatch(addBook(values))
+					setShowModal(false)
 					setSubmitting(false)
 				}, 400)
 			}}
@@ -153,7 +153,7 @@ const ModalForm = () => {
 							disabled={isSubmitting}
 							className={s.button}
 						>
-							Submit
+							Add the book to a catalog
 						</button>
 					</div>
 				</Form>
@@ -162,13 +162,19 @@ const ModalForm = () => {
 	)
 }
 
-export const Modal = () => {
-	return (
-		<div className={s.Root}>
-			<div className={s.content}>
-				<div className={s.title}>Adding the book</div>
-				<ModalForm />
+export const Modal: React.FC<{setShowModal: (a: boolean) => void; show: boolean}> = ({
+	setShowModal,
+	show,
+}) => {
+	if (show) {
+		return (
+			<div className={s.Root}>
+				<div className={s.content}>
+					<div className={s.title}>Adding the book</div>
+					<ModalForm setShowModal={setShowModal} />
+				</div>
 			</div>
-		</div>
-	)
+		)
+	}
+	return <></>
 }

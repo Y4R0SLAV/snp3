@@ -1,5 +1,12 @@
 import s from './AddBookButton.module.css'
 
-export const AddBookButton = () => {
-	return <div className={s.Root}>Add a book</div>
+export const AddBookButton: React.FC<{setShowModal: (a: boolean) => void}> = ({setShowModal}) => {
+	return (
+		<div
+			className={s.Root}
+			onClick={() => setShowModal(true)}
+		>
+			Add a book
+		</div>
+	)
 }
