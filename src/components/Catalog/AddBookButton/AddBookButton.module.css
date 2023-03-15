@@ -1,7 +1,10 @@
 .Root {
-	border: 1px dashed black;
+	border: 1px solid rgb(3, 72, 3);
+	border-radius: 10px;
 	padding: 10px;
 	font-size: 18px;
 	color: rgb(3, 72, 3);
 	max-width: 90px;
+	cursor: pointer;
+	margin: 10px 0;
 }

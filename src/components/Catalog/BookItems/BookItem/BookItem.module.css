@@ -1,13 +1,15 @@
 .Root {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 	border: 1px solid #eee;
 	padding: 10px;
+	width: 164px;
 }
 
 .img {
-	max-width: 143px;
+	width: 143px;
 }
 
 img {
@@ -26,4 +28,13 @@ img {
 
 .author {
 	color: #3e3e3e;
+}
+
+.btn {
+	height: 25px;
+	margin: 10px 0 5px;
+	border: 1px solid orange;
+	padding: 7px 5px 4px;
+	border-radius: 10px;
+	cursor: pointer;
 }

@@ -7,12 +7,24 @@ export const AllType = 'All'
 export const ActiveType = 'Active'
 export const CompletedType = 'Completed'
 
+export const showingType = 'showing'
+export const addingType = 'adding'
+export const redactoringType = 'redactoring'
+
+export type ModalType = typeof showingType | typeof addingType | typeof redactoringType
+
 interface BooksState {
 	books: Array<BookItemType>
+	currentBook?: BookItemType
+	modalType: ModalType
+	showModal: boolean
 }
 
 const initialState: BooksState = {
 	books: [],
+	currentBook: undefined,
+	modalType: addingType,
+	showModal: false,
 }
 
 export const booksSlice = createSlice({
@@ -30,11 +42,32 @@ export const booksSlice = createSlice({
 		initializeBooks: (state, action: PayloadAction<Array<BookItemType>>) => {
 			state.books = action.payload
 		},
+
+		setModalType: (state, action: PayloadAction<ModalType>) => {
+			state.modalType = action.payload
+		},
+
+		toggleModalWindow: (state) => {
+			state.showModal = !state.showModal
+		},
+		setCurrentBook: (state, action: PayloadAction<number>) => {
+			state.currentBook = state.books.find((book) => book.id === action.payload)
+		},
 	},
 })
 
-export const {addBook, removeBook, initializeBooks} = booksSlice.actions
+export const {
+	addBook,
+	removeBook,
+	initializeBooks,
+	setModalType,
+	toggleModalWindow,
+	setCurrentBook,
+} = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
+export const selectModalType = (state: RootState) => state.books.modalType
+export const selectShowModal = (state: RootState) => state.books.showModal
+export const selectBook = (state: RootState) => state.books.currentBook
 
 export default booksSlice.reducer
