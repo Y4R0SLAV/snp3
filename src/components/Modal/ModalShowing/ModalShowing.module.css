@@ -1,0 +1,27 @@
+.Root {
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+	padding: 10px 0;
+	font-size: 24px;
+	border-bottom: 1px solid gray;
+}
+
+.cover {
+	width: 40%;
+}
+
+.info {
+	font-size: 24px;
+	width: 55%;
+}
+
+.info div {
+	margin-bottom: 5px;
+}

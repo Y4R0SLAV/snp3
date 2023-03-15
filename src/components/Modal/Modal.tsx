@@ -1,10 +1,15 @@
 import s from './Modal.module.css'
 import classNames from 'classnames/bind'
 import {ModalAdding} from './ModalAdding/ModalAdding'
-import {selectBook, selectShowModal, toggleModalWindow} from '../../redux/reducers/books'
+import {
+	addingType,
+	selectShowModal,
+	showingType,
+	toggleModalWindow,
+	selectModalType,
+} from 'reducers/books'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectModalType} from './../../redux/reducers/books'
-import {BookItemType} from '../Catalog/BookItems/BookItem/BookItem'
+import {ModalShowing} from './ModalShowing/ModalShowing'
 
 export const Modal = () => {
 	const dispatch = useDispatch()
@@ -33,44 +38,11 @@ export const Modal = () => {
 const ModalContent = () => {
 	const type = useSelector(selectModalType)
 
-	if (type === 'adding') {
+	if (type === addingType) {
 		return <ModalAdding />
-	} else if (type === 'showing') {
+	} else if (type === showingType) {
 		return <ModalShowing />
 	} else {
 		return <>Error: incorect type of a modal window</>
 	}
-}
-
-const ModalShowing = () => {
-	return (
-		<div className=''>
-			<div className={s.title}>Showing the book</div>
-			<BookShowcase />
-		</div>
-	)
-}
-
-const BookShowcase = () => {
-	const book = useSelector(selectBook)
-	if (book) {
-		return (
-			<div className={s.showcase}>
-				<div className={s.cover}>
-					<img
-						src={book.imgSrc}
-						alt=''
-					/>
-				</div>
-				<div className={s.info}>
-					<div>Title: {book.title}</div>
-					<div>Author: {book.author}</div>
-					<div>ISBN-13: {book.ISBN}</div>
-					<div>Published in: {book.publishYear}</div>
-					<div>Published: {book.publisher}</div>
-				</div>
-			</div>
-		)
-	}
-	return <>Error: book is not selected</>
 }
