@@ -1,4 +1,4 @@
-import {Modal} from '../Modal/Modal'
+import {Modal} from 'components/Modal/Modal'
 import {AddBookButton} from './AddBookButton/AddBookButton'
 import {BookItems} from './BookItems/BookItems'
 import s from './Catalog.module.css'

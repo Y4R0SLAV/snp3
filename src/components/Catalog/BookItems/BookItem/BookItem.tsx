@@ -1,12 +1,7 @@
 import {FC} from 'react'
 import s from './BookItem.module.css'
 import {useDispatch} from 'react-redux'
-import {
-	setCurrentBook,
-	setModalType,
-	showingType,
-	toggleModalWindow,
-} from '../../../../redux/reducers/books'
+import {setCurrentBook, setModalType, showingType, toggleModalWindow} from 'reducers/books'
 
 export type BookItemType = {
 	id: number

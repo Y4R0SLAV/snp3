@@ -1,9 +1,9 @@
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {initializeBooks, selectBooks} from '../../../redux/reducers/books'
+import {initializeBooks, selectBooks} from 'reducers/books'
 import {useEffect} from 'react'
-import {getBooksLS, setBooksLS} from './../../../localStorageInteraction'
+import {getBooksLS, setBooksLS} from 'src/localStorageInteraction'
 
 export const BookItems = () => {
 	const books = useSelector(selectBooks)

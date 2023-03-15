@@ -1,9 +1,8 @@
-import {FC} from 'react'
 import {Formik, Form, useField, FieldHookConfig} from 'formik'
 import * as Yup from 'yup'
 import {useDispatch} from 'react-redux'
-import {BookItemType} from '../../Catalog/BookItems/BookItem/BookItem'
-import {addBook, toggleModalWindow} from '../../../redux/reducers/books'
+import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
+import {addBook, toggleModalWindow} from 'reducers/books'
 
 import s from './ModalAdding.module.css'
 import classNames from 'classnames/bind'

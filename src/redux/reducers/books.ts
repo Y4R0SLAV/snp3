@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
-import {BookItemType} from '../../components/Catalog/BookItems/BookItem/BookItem'
+import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 export const AllType = 'All'
 export const ActiveType = 'Active'

@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"baseUrl": "",
+		"paths": {
+			"reducers/*": ["./src/redux/reducers/*"],
+			"src/*": ["./src/*"],
+			"components/*": ["./src/components/*"]
+		}
+	}
+}
