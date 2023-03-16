@@ -2,15 +2,6 @@ import s from './ModalShowing.module.css'
 import {selectBook} from 'reducers/books'
 import {useSelector} from 'react-redux'
 
-export const ModalShowing = () => {
-	return (
-		<div className=''>
-			<div className={s.title}>Showing the book</div>
-			<BookShowcase />
-		</div>
-	)
-}
-
 const BookShowcase = () => {
 	const book = useSelector(selectBook)
 
@@ -36,3 +27,5 @@ const BookShowcase = () => {
 	}
 	return <>Error: book is not selected</>
 }
+
+export default BookShowcase
