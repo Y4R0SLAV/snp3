@@ -23,6 +23,9 @@ export const BookItems = () => {
 
 	return (
 		<div className={s.Root}>
+			{books.length === 0 && (
+				<div className={s.warning}>There are no books in the catalog here yet.</div>
+			)}
 			{books.map((book) => {
 				return (
 					<BookItem
