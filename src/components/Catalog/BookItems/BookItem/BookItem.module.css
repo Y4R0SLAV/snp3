@@ -5,15 +5,19 @@
 	align-items: center;
 	border: 1px solid #eee;
 	padding: 10px;
-	width: 164px;
+	width: 200px;
 }
 
 .img {
-	width: 143px;
+	width: 180px;
+	height: 280px;
+	padding-bottom: 5px;
 }
 
 img {
 	max-width: 100%;
+	min-height: 100%;
+	object-fit: contain;
 }
 
 .info {
@@ -23,7 +27,6 @@ img {
 
 .title {
 	font-weight: bolder;
-	word-wrap: break-word;
 }
 
 .author {
@@ -34,7 +37,14 @@ img {
 	height: 25px;
 	margin: 10px 0 5px;
 	border: 1px solid orange;
-	padding: 7px 5px 4px;
+	padding: 7px 10px 2px;
 	border-radius: 10px;
 	cursor: pointer;
+
+	transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+	transform: scale(1.05);
+	border-style: dashed;
 }

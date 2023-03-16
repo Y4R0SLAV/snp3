@@ -1,5 +1,12 @@
 .Root {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	gap: 10px;
+	margin: 15px 0 50px;
+}
+
+.warning {
+	color: red;
+	font-size: 32px;
 }
