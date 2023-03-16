@@ -44,7 +44,15 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 	description,
 	format,
 }) => {
+	const formateString = (str: string) => {
+		let answer = str
+		if (str.length > 20) {
+			answer = str.slice(0, 20) + '...'
+		}
+		return answer
+	}
 	// full - личная страничка для каждой книги, icon же - то что в каталоге
+	// неиспользуемые пропсы не используются только для первого задания
 	if (format === 'icon') {
 		return (
 			<div className={s.Root}>
@@ -55,8 +63,8 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 					/>
 				</div>
 				<div className={s.info}>
-					<div className={s.title}>{title}</div>
-					<div className={s.author}>{author}</div>
+					<div className={s.title}>{formateString(title)}</div>
+					<div className={s.author}>{formateString(author)}</div>
 				</div>
 
 				<ShowingButton id={id} />
