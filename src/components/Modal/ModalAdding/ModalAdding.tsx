@@ -83,10 +83,12 @@ const ModalForm = () => {
 				} as BookItemType
 			}
 			validationSchema={SignupSchema}
-			onSubmit={(values, {setSubmitting}) => {
+			onSubmit={(values, {setSubmitting, resetForm}) => {
 				setTimeout(() => {
 					dispatch(addBook(values))
 					dispatch(toggleModalWindow())
+					resetForm()
+
 					setSubmitting(false)
 				}, 400)
 			}}
@@ -163,11 +165,4 @@ const ModalForm = () => {
 	)
 }
 
-export const ModalAdding = () => {
-	return (
-		<div>
-			<div className={s.title}>Adding the book</div>
-			<ModalForm />
-		</div>
-	)
-}
+export default ModalForm
