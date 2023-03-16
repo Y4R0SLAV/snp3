@@ -32,7 +32,7 @@ export const booksSlice = createSlice({
 	initialState,
 	reducers: {
 		addBook: (state, action: PayloadAction<BookItemType>) => {
-			state.books.push(action.payload)
+			state.books.push({...action.payload, id: Date.now()})
 		},
 
 		removeBook: (state, action: PayloadAction<string>) => {
