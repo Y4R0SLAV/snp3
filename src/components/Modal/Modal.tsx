@@ -1,6 +1,4 @@
-import s from './Modal.module.css'
-import classNames from 'classnames/bind'
-import {ModalAdding} from './ModalAdding/ModalAdding'
+import {useEffect} from 'react'
 import {
 	addingType,
 	selectShowModal,
@@ -9,7 +7,12 @@ import {
 	selectModalType,
 } from 'reducers/books'
 import {useDispatch, useSelector} from 'react-redux'
-import {ModalShowing} from './ModalShowing/ModalShowing'
+
+import ModalShowing from './ModalShowing/ModalShowing'
+import ModalAdding from './ModalAdding/ModalAdding'
+
+import s from './Modal.module.css'
+import classNames from 'classnames/bind'
 
 export const Modal = () => {
 	const dispatch = useDispatch()
@@ -18,6 +21,15 @@ export const Modal = () => {
 	const toggleModal = () => {
 		dispatch(toggleModalWindow())
 	}
+
+	useEffect(() => {
+		// блокиратор скролла заднего фона
+		if (show) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'unset'
+		}
+	}, [show])
 
 	const cx = classNames.bind(s)
 	return (
@@ -39,9 +51,19 @@ const ModalContent = () => {
 	const type = useSelector(selectModalType)
 
 	if (type === addingType) {
-		return <ModalAdding />
+		return (
+			<>
+				<div className={s.title}>Adding the book</div>
+				<ModalAdding />
+			</>
+		)
 	} else if (type === showingType) {
-		return <ModalShowing />
+		return (
+			<>
+				<div className={s.title}>Showing the book</div>
+				<ModalShowing />
+			</>
+		)
 	} else {
 		return <>Error: incorect type of a modal window</>
 	}
