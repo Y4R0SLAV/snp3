@@ -33,6 +33,11 @@ img {
 	color: #3e3e3e;
 }
 
+.btns {
+	display: flex;
+	gap: 10px;
+}
+
 .btn {
 	height: 25px;
 	margin: 10px 0 5px;

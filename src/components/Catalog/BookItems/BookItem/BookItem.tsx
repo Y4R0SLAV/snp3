@@ -1,7 +1,13 @@
 import {FC} from 'react'
 import s from './BookItem.module.css'
 import {useDispatch} from 'react-redux'
-import {setCurrentBook, setModalType, showingType, toggleModalWindow} from 'reducers/books'
+import {
+	redactoringType,
+	setCurrentBook,
+	setModalType,
+	showingType,
+	toggleModalWindow,
+} from 'reducers/books'
 
 export type BookItemType = {
 	id: number
@@ -29,6 +35,25 @@ const ShowingButton: FC<{id: number}> = ({id}) => {
 			onClick={clickHandler}
 		>
 			Quick view
+		</div>
+	)
+}
+
+const EditingButton: FC<{id: number}> = ({id}) => {
+	const dispatch = useDispatch()
+
+	const clickHandler = () => {
+		dispatch(setCurrentBook(id))
+		dispatch(setModalType(redactoringType))
+		dispatch(toggleModalWindow())
+	}
+
+	return (
+		<div
+			className={s.btn}
+			onClick={clickHandler}
+		>
+			Edit
 		</div>
 	)
 }
@@ -67,7 +92,10 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 					<div className={s.author}>{formateString(author)}</div>
 				</div>
 
-				<ShowingButton id={id} />
+				<div className={s.btns}>
+					<ShowingButton id={id} />
+					<EditingButton id={id} />
+				</div>
 			</div>
 		)
 	}
