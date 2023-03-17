@@ -1,0 +1,27 @@
+.Root {
+	margin: 5px 0 0;
+	font-size: 16px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.label {
+	padding: 5px 0 15px 5px;
+}
+
+.error {
+	color: red;
+	display: block;
+	transition: all 0.2s ease-in-out;
+	min-height: 25px;
+	padding-left: 5px;
+}
+
+.hide {
+	opacity: 0;
+}
+
+@media (max-width: 540px) {
+	.label {
+		font-size: 14px;
+	}
+}

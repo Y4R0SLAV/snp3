@@ -1,0 +1,9 @@
+.Root {
+	margin: 0 0 2.5px 2px;
+	width: 83%;
+	padding: 7px 9.5px 10.5px;
+	border-radius: 10px;
+	background: #f9f7f4;
+	border: 1px solid #f4f0e9;
+	resize: none;
+}

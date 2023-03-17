@@ -1,51 +1,16 @@
-import {Formik, Form, useField, FieldHookConfig} from 'formik'
+import {useState} from 'react'
+import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
 import {useDispatch} from 'react-redux'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
-import {addBook, toggleModalWindow} from 'reducers/books'
+import {addBook, editBook, removeBook, toggleModalWindow} from 'reducers/books'
 
-import s from './ModalAdding.module.css'
-import classNames from 'classnames/bind'
+import {BlockBox} from './FormParts/BlockBox/BlockBox'
+import {FormikCustomInput} from './FormParts/FormikInput/FormikInput'
+import {FormikCustomTextarea} from './FormParts/FormikTextarea/FormikTextarea'
+import {FormikButton} from './FormParts/FormikButton/FormikButton'
 
-const BlockBox: React.FC<{title: string; errorMessage: string; children: React.ReactNode}> = ({
-	title,
-	errorMessage,
-	children,
-}) => {
-	const cx = classNames.bind(s)
-	return (
-		<div className={s.block}>
-			<div className={s.label}>{title}</div>
-			{children}
-			<div className={cx({error: true, hide: !errorMessage})}>{errorMessage}</div>
-		</div>
-	)
-}
-
-const FormikCustomInput = (props: FieldHookConfig<string>) => {
-	const [field] = useField(props)
-
-	return (
-		<input
-			className={s.input}
-			{...field}
-			placeholder={props.placeholder}
-			type={props.type}
-		/>
-	)
-}
-
-const FormikCustomTextarea = (props: FieldHookConfig<string>) => {
-	const [field] = useField(props)
-
-	return (
-		<textarea
-			className={s.textarea}
-			{...field}
-			placeholder={props.placeholder}
-		/>
-	)
-}
+import s from './ModalForm.module.css'
 
 const SignupSchema = Yup.object().shape({
 	ISBN: Yup.string()
@@ -66,34 +31,59 @@ const SignupSchema = Yup.object().shape({
 	description: Yup.string().required('Description is required'),
 })
 
-const ModalForm = () => {
+export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean}> = ({
+	initialValue,
+	editing = false,
+}) => {
 	const dispatch = useDispatch()
+	type submitButtonType = 'add' | 'remove' | 'save'
+	const [submitButtonState, setSubmitButtonState] = useState<submitButtonType>('add')
+
+	let formValue = {
+		title: '',
+		author: '',
+		imgSrc: '',
+		publisher: '',
+		ISBN: '',
+		publishYear: 2000,
+		description: '',
+	} as BookItemType
+
+	if (editing && initialValue) {
+		formValue = initialValue
+	}
 
 	return (
 		<Formik
-			initialValues={
-				{
-					title: '',
-					author: '',
-					imgSrc: '',
-					publisher: '',
-					ISBN: '',
-					publishYear: 2000,
-					description: '',
-				} as BookItemType
-			}
+			enableReinitialize
+			initialValues={formValue}
 			validationSchema={SignupSchema}
-			onSubmit={(values, {setSubmitting, resetForm}) => {
-				setTimeout(() => {
-					dispatch(addBook(values))
-					dispatch(toggleModalWindow())
-					resetForm()
+			onSubmit={(values, {resetForm}) => {
+				switch (submitButtonState) {
+					case 'add':
+						dispatch(addBook(values))
+						break
+					case 'save':
+						// id всегда будет, т.к. если я попал в editMode, то точно передал initialState
+						const newBook = {...values, id: initialValue?.id || -1}
+						dispatch(editBook(newBook))
+						break
 
-					setSubmitting(false)
-				}, 400)
+					case 'remove':
+						// то же самое, id всегда найдётся
+						console.log(initialValue?.id)
+						dispatch(removeBook(initialValue?.id || -1))
+						break
+
+					default:
+						break
+				}
+
+				dispatch(toggleModalWindow())
+				resetForm()
 			}}
 		>
-			{({isSubmitting, errors, touched}) => (
+			{({errors, touched}) => (
 				<Form className={s.form}>
 					<BlockBox
 						title='Title'
@@ -150,19 +140,23 @@ const ModalForm = () => {
 						/>
 					</BlockBox>
 
-					<div className={s.button}>
-						<button
-							type='submit'
-							disabled={isSubmitting}
-							className={s.button}
-						>
-							Add the book to a catalog
-						</button>
-					</div>
+					{editing ? (
+						<div className={s.buttons}>
+							<FormikButton
+								onClick={() => setSubmitButtonState('save')}
+								title='Save'
+							/>
+
+							<FormikButton
+								onClick={() => setSubmitButtonState('remove')}
+								title='Remove'
+							/>
+						</div>
+					) : (
+						<FormikButton title='Add the book to a catalog' />
+					)}
 				</Form>
 			)}
 		</Formik>
 	)
 }
-
-export default ModalForm

@@ -1,18 +1,20 @@
 import {useEffect} from 'react'
 import {
 	addingType,
-	selectShowModal,
+	redactoringType,
 	showingType,
+	selectShowModal,
 	toggleModalWindow,
 	selectModalType,
 } from 'reducers/books'
 import {useDispatch, useSelector} from 'react-redux'
 
 import ModalShowing from './ModalShowing/ModalShowing'
-import ModalAdding from './ModalAdding/ModalAdding'
+import {ModalForm} from './ModalForm/ModalForm'
 
 import s from './Modal.module.css'
 import classNames from 'classnames/bind'
+import {selectBook} from './../../redux/reducers/books'
 
 export const Modal = () => {
 	const dispatch = useDispatch()
@@ -49,12 +51,13 @@ export const Modal = () => {
 
 const ModalContent = () => {
 	const type = useSelector(selectModalType)
+	const currentBook = useSelector(selectBook)
 
 	if (type === addingType) {
 		return (
 			<>
 				<div className={s.title}>Adding the book</div>
-				<ModalAdding />
+				<ModalForm />
 			</>
 		)
 	} else if (type === showingType) {
@@ -62,6 +65,16 @@ const ModalContent = () => {
 			<>
 				<div className={s.title}>Showing the book</div>
 				<ModalShowing />
+			</>
+		)
+	} else if (type === redactoringType) {
+		return (
+			<>
+				<div className={s.title}>Editing the book</div>
+				<ModalForm
+					initialValue={currentBook}
+					editing={true}
+				/>
 			</>
 		)
 	} else {
