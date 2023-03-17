@@ -35,8 +35,17 @@ export const booksSlice = createSlice({
 			state.books.push({...action.payload, id: Date.now()})
 		},
 
-		removeBook: (state, action: PayloadAction<string>) => {
-			state.books = [...state.books.filter((book) => book.id !== +action.payload)]
+		editBook: (state, action: PayloadAction<BookItemType>) => {
+			state.books = state.books.map((book) => {
+				if (book.id === action.payload.id) {
+					return (book = action.payload)
+				}
+				return book
+			})
+		},
+
+		removeBook: (state, action: PayloadAction<number>) => {
+			state.books = [...state.books.filter((book) => book.id !== action.payload)]
 		},
 
 		initializeBooks: (state, action: PayloadAction<Array<BookItemType>>) => {
@@ -63,6 +72,7 @@ export const {
 	setModalType,
 	toggleModalWindow,
 	setCurrentBook,
+	editBook,
 } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
