@@ -153,7 +153,10 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 							/>
 						</div>
 					) : (
-						<FormikButton title='Add the book to a catalog' />
+						<FormikButton
+							title='Add the book to a catalog'
+							onClick={() => setSubmitButtonState('add')}
+						/>
 					)}
 				</Form>
 			)}
