@@ -11,17 +11,19 @@ import {FormikCustomTextarea} from './FormParts/FormikTextarea/FormikTextarea'
 import {FormikButton} from './FormParts/FormikButton/FormikButton'
 
 import s from './ModalForm.module.css'
+import {getCurrentYear} from 'src/utils/functions'
 
 const SignupSchema = Yup.object().shape({
-	ISBN: Yup.string()
-		.matches(/^[0-9]+$/, 'Invalid ISBN-13: Must be only digits')
-		.min(13, 'Invalid ISBN-13: it must contain 13 digit')
-		.max(13, 'Invalid ISBN-13: it must contain 13 digit')
-		.required('Required'),
-	publishYear: Yup.number().moreThan(
-		400,
-		'Invalid year of published: The book should be printed on paper, not written on clay tablets',
-	),
+	ISBN: Yup.string().matches(/^[0-9]+$/, 'Invalid ISBN-13: Must be only digits'),
+	publishYear: Yup.number()
+		.moreThan(
+			400,
+			'Invalid year of published: The book should be printed on paper, not written on clay tablets',
+		)
+		.lessThan(
+			getCurrentYear(),
+			'Invalid year of published: Еhe entered value exceeds the current year',
+		),
 	imgSrc: Yup.string()
 		.url('Invalid url: Enter a correct adress to a book cover')
 		.required('Url is required'),
