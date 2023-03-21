@@ -9,6 +9,15 @@ import {ModalForm} from './ModalForm/ModalForm'
 import s from './Modal.module.css'
 import classNames from 'classnames/bind'
 import {selectBook} from './../../redux/reducers/books'
+	
+const CloseModalButton: React.FC<{onClick: () => void}> = ({onClick}) => {
+	return (
+		<div
+			onClick={onClick}
+			className={s.close}
+		></div>
+	)
+}
 
 export const Modal = () => {
 	const dispatch = useDispatch()
@@ -37,6 +46,7 @@ export const Modal = () => {
 				className={s.content}
 				onClick={(e) => e.stopPropagation()}
 			>
+				<CloseModalButton onClick={() => toggleModal()} />
 				<ModalContent />
 			</div>
 		</div>
