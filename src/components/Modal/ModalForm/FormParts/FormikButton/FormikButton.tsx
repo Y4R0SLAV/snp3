@@ -1,15 +1,15 @@
+import {Button} from 'src/components/common/Button/Button'
 import s from './FormikButton.module.css'
 
 export const FormikButton: React.FC<{title: string; onClick?: () => void}> = ({title, onClick}) => {
 	return (
 		<div className={s.Root}>
-			<button
+			<Button
 				onClick={onClick}
-				type='submit'
-				className={s.button}
+				props={s.button}
 			>
-				{title}
-			</button>
+				<button type='submit'>{title}</button>
+			</Button>
 		</div>
 	)
 }

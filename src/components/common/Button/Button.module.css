@@ -1,0 +1,22 @@
+.Root {
+	border: 1px solid rgb(3, 72, 3);
+	border-radius: 10px;
+	font-size: 18px;
+	color: var(--button-main-color);
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding: var(--button-padding);
+
+	transition: all 0.3s ease-in-out;
+	min-width: 80px;
+}
+
+.Root:hover {
+	background: var(--button-hover-background);
+	color: var(--button-hover-color);
+	transform: scale(1.05);
+}

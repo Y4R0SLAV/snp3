@@ -36,20 +36,10 @@ img {
 .btns {
 	display: flex;
 	gap: 10px;
-}
 
-.btn {
-	height: 25px;
 	margin: 10px 0 5px;
-	border: 1px solid orange;
-	padding: 7px 10px 2px;
-	border-radius: 10px;
-	cursor: pointer;
-
-	transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-	transform: scale(1.05);
 	border-style: dashed;
 }

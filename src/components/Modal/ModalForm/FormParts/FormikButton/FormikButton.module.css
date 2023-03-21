@@ -4,28 +4,11 @@
 	justify-content: center;
 }
 
-.button {
-	margin: 3px;
-	color: #333;
-	border-radius: 10px;
-	width: 180px;
-	height: 30px;
+button {
+	background: none;
+	border: none;
 	cursor: pointer;
-
-	padding-bottom: 5px;
-	transition: all 0.2s ease-in-out;
-}
-
-.button:hover {
-	color: green;
-	background: #fefefe;
-}
-
-@media (max-width: 540px) {
-	.button {
-		width: 160px;
-		height: 23px;
-		font-size: 12.5px;
-		padding: 5px 0;
-	}
+	margin: var(--button-negative-padding);
+	padding: var(--button-padding);
+	/* стили чтобы высота/ширина Button из common совпала со стоковой кнопкой */
 }

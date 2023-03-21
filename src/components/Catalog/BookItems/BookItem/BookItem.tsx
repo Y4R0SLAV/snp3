@@ -8,6 +8,7 @@ import {
 	showingType,
 	toggleModalWindow,
 } from 'reducers/books'
+import {Button} from 'src/components/common/Button/Button'
 
 export type BookItemType = {
 	id: number
@@ -30,12 +31,12 @@ const ShowingButton: FC<{id: number}> = ({id}) => {
 	}
 
 	return (
-		<div
-			className={s.btn}
+		<Button
 			onClick={clickHandler}
+			props={{classnames: s.btn}}
 		>
 			Quick view
-		</div>
+		</Button>
 	)
 }
 
@@ -49,12 +50,12 @@ const EditingButton: FC<{id: number}> = ({id}) => {
 	}
 
 	return (
-		<div
-			className={s.btn}
+		<Button
 			onClick={clickHandler}
+			props={{classnames: s.btn}}
 		>
 			Edit
-		</div>
+		</Button>
 	)
 }
 
