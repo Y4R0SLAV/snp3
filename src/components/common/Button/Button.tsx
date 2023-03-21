@@ -5,12 +5,13 @@ interface IButtonProps {
 	children?: React.ReactNode | Array<React.ReactNode>
 	props?: any
 	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+	classNames?: string
 }
 
-export const Button: FC<IButtonProps> = ({onClick, props, children}) => {
+export const Button: FC<IButtonProps> = ({onClick, props, classNames, children}) => {
 	return (
 		<div
-			className={s.Root}
+			className={s.Root + ' ' + classNames}
 			{...props}
 			onClick={onClick}
 		>

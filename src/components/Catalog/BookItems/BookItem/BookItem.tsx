@@ -1,10 +1,8 @@
 import {FC} from 'react'
 import s from './BookItem.module.css'
-import {useDispatch} from 'react-redux'
-import {setCurrentBook, setModalType, toggleModalWindow} from 'reducers/books'
-import {redactoringType, showingType} from 'reducers/types'
-import {Button} from 'src/components/common/Button/Button'
 import {formateString} from 'src/utils/functions'
+import {ShowingButton} from './Buttons/ShowingButton'
+import {EditingButton} from './Buttons/EditingButton'
 
 export type BookItemType = {
 	id: number
@@ -15,44 +13,6 @@ export type BookItemType = {
 	publishYear: number
 	publisher: string
 	description: string
-}
-
-const ShowingButton: FC<{id: number}> = ({id}) => {
-	const dispatch = useDispatch()
-
-	const clickHandler = () => {
-		dispatch(setModalType(showingType))
-		dispatch(toggleModalWindow())
-		dispatch(setCurrentBook(id))
-	}
-
-	return (
-		<Button
-			onClick={clickHandler}
-			props={{classnames: s.btn}}
-		>
-			Quick view
-		</Button>
-	)
-}
-
-const EditingButton: FC<{id: number}> = ({id}) => {
-	const dispatch = useDispatch()
-
-	const clickHandler = () => {
-		dispatch(setCurrentBook(id))
-		dispatch(setModalType(redactoringType))
-		dispatch(toggleModalWindow())
-	}
-
-	return (
-		<Button
-			onClick={clickHandler}
-			props={{classnames: s.btn}}
-		>
-			Edit
-		</Button>
-	)
 }
 
 export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({

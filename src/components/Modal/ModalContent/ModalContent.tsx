@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 import {selectModalType, selectBook} from 'reducers/books'
 import {addingType, showingType, redactoringType} from 'reducers/types'
 import {ModalForm} from './ModalForm/ModalForm'
-import ModalShowing from './ModalShowing/ModalShowing'
+import {BookShowcase} from './../../Catalog/BookShowcase/BookShowcase'
 
 export const ModalContent = () => {
 	const type = useSelector(selectModalType)
@@ -20,7 +20,7 @@ export const ModalContent = () => {
 		return (
 			<>
 				<div className={s.title}>Showing the book</div>
-				<ModalShowing />
+				<BookShowcase />
 			</>
 		)
 	} else if (type === redactoringType) {

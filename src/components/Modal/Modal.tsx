@@ -1,15 +1,7 @@
 import {useEffect} from 'react'
 import s from './Modal.module.css'
 import classNames from 'classnames/bind'
-
-const CloseModalButton: React.FC<{onClick: () => void}> = ({onClick}) => {
-	return (
-		<div
-			onClick={onClick}
-			className={s.close}
-		></div>
-	)
-}
+import {ModalCloseButton} from './ModalCloseButton/ModalCloseButton'
 
 type ModalPropsType = {
 	isVisible: boolean
@@ -37,10 +29,9 @@ export const Modal: React.FC<ModalPropsType> = ({isVisible, onClose, children}) 
 				className={s.content}
 				onClick={(e) => e.stopPropagation()}
 			>
-				<CloseModalButton onClick={() => onClose()} />
+				<ModalCloseButton onClick={() => onClose()} />
 				{children}
 			</div>
 		</div>
 	)
 }
-

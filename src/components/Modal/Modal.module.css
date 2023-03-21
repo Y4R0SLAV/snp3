@@ -26,27 +26,6 @@
 	position: relative;
 }
 
-.close {
-	position: absolute;
-	right: 10px;
-	top: 4px;
-	cursor: pointer;
-	color: red;
-
-	font-size: 36px;
-}
-
-.close::after {
-	transition: all ease-in-out 0.3s;
-	content: '×';
-	display: inline-block;
-	/* inline-block, чтобы работал scale() */
-}
-
-.close:hover::after {
-	transform: scale(1.2);
-}
-
 @media (max-width: 1140px) {
 	.content {
 		width: 80vw;
