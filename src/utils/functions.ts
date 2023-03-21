@@ -3,3 +3,7 @@ export const getCurrentYear = () => {
 }
 
 export const formateString = (str: string) => (str.length > 20 ? `${str.slice(0, 20)}...` : str)
+
+export const exhaustiveCheck = (param: never) => {
+	console.log('Обработайте значение ' + param)
+}
