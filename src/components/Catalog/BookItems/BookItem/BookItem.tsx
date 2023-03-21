@@ -9,6 +9,7 @@ import {
 	toggleModalWindow,
 } from 'reducers/books'
 import {Button} from 'src/components/common/Button/Button'
+import {formateString} from 'src/utils/functions'
 
 export type BookItemType = {
 	id: number
@@ -70,13 +71,6 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 	description,
 	format,
 }) => {
-	const formateString = (str: string) => {
-		let answer = str
-		if (str.length > 20) {
-			answer = str.slice(0, 20) + '...'
-		}
-		return answer
-	}
 	// full - личная страничка для каждой книги, icon же - то что в каталоге
 	// неиспользуемые пропсы не используются только для первого задания
 	if (format === 'icon') {
@@ -101,5 +95,5 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 		)
 	}
 
-	return <div className=''></div>
+	return <></>
 }
