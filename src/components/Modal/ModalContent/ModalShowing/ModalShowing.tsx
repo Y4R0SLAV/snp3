@@ -19,7 +19,7 @@ const BookShowcase = () => {
 					<div>Author: {book.author}</div>
 					<div>ISBN-13: {book.ISBN}</div>
 					<div>Published in: {book.publishYear}</div>
-					<div>Published: {book.publisher}</div>
+					<div>Published by: {book.publisher}</div>
 					<div>Description: {book.description}</div>
 				</div>
 			</div>

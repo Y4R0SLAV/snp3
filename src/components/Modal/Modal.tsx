@@ -1,15 +1,7 @@
 import {useEffect} from 'react'
-import {selectShowModal, toggleModalWindow, selectModalType} from 'reducers/books'
-import {addingType, redactoringType, showingType} from 'reducers/types'
-import {useDispatch, useSelector} from 'react-redux'
-
-import ModalShowing from './ModalShowing/ModalShowing'
-import {ModalForm} from './ModalForm/ModalForm'
-
 import s from './Modal.module.css'
 import classNames from 'classnames/bind'
-import {selectBook} from './../../redux/reducers/books'
-	
+
 const CloseModalButton: React.FC<{onClick: () => void}> = ({onClick}) => {
 	return (
 		<div
@@ -19,69 +11,36 @@ const CloseModalButton: React.FC<{onClick: () => void}> = ({onClick}) => {
 	)
 }
 
-export const Modal = () => {
-	const dispatch = useDispatch()
-	const show = useSelector(selectShowModal)
+type ModalPropsType = {
+	isVisible: boolean
+	onClose: () => void
+	children: React.ReactNode
+}
 
-	const toggleModal = () => {
-		dispatch(toggleModalWindow())
-	}
-
+export const Modal: React.FC<ModalPropsType> = ({isVisible, onClose, children}) => {
 	useEffect(() => {
 		// блокиратор скролла заднего фона
-		if (show) {
+		if (isVisible) {
 			document.body.style.overflow = 'hidden'
 		} else {
 			document.body.style.overflow = 'unset'
 		}
-	}, [show])
+	}, [isVisible])
 
 	const cx = classNames.bind(s)
 	return (
 		<div
-			className={cx({Root: true, hide: !show})}
-			onClick={() => toggleModal()}
+			className={cx({Root: true, hide: !isVisible})}
+			onClick={() => onClose()}
 		>
 			<div
 				className={s.content}
 				onClick={(e) => e.stopPropagation()}
 			>
-				<CloseModalButton onClick={() => toggleModal()} />
-				<ModalContent />
+				<CloseModalButton onClick={() => onClose()} />
+				{children}
 			</div>
 		</div>
 	)
 }
 
-const ModalContent = () => {
-	const type = useSelector(selectModalType)
-	const currentBook = useSelector(selectBook)
-
-	if (type === addingType) {
-		return (
-			<>
-				<div className={s.title}>Adding the book</div>
-				<ModalForm />
-			</>
-		)
-	} else if (type === showingType) {
-		return (
-			<>
-				<div className={s.title}>Showing the book</div>
-				<ModalShowing />
-			</>
-		)
-	} else if (type === redactoringType) {
-		return (
-			<>
-				<div className={s.title}>Editing the book</div>
-				<ModalForm
-					initialValue={currentBook}
-					editing={true}
-				/>
-			</>
-		)
-	} else {
-		return <>Error: incorect type of a modal window</>
-	}
-}
