@@ -3,7 +3,7 @@
 	right: 10px;
 	top: 4px;
 	cursor: pointer;
-	color: red;
+	color: var(--modal-close-button-color);
 
 	font-size: 36px;
 }
