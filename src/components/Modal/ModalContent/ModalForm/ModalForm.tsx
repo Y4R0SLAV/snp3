@@ -73,7 +73,6 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 
 					case 'remove':
 						// то же самое, id всегда найдётся
-						console.log(initialValue?.id)
 						dispatch(removeBook(initialValue?.id || -1))
 						break
 
