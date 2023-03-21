@@ -1,12 +1,6 @@
 import {useEffect} from 'react'
-import {
-	addingType,
-	redactoringType,
-	showingType,
-	selectShowModal,
-	toggleModalWindow,
-	selectModalType,
-} from 'reducers/books'
+import {selectShowModal, toggleModalWindow, selectModalType} from 'reducers/books'
+import {addingType, redactoringType, showingType} from 'reducers/types'
 import {useDispatch, useSelector} from 'react-redux'
 
 import ModalShowing from './ModalShowing/ModalShowing'

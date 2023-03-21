@@ -2,16 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
-
-export const AllType = 'All'
-export const ActiveType = 'Active'
-export const CompletedType = 'Completed'
-
-export const showingType = 'showing'
-export const addingType = 'adding'
-export const redactoringType = 'redactoring'
-
-export type ModalType = typeof showingType | typeof addingType | typeof redactoringType
+import {ModalType, addingType} from './types'
 
 interface BooksState {
 	books: Array<BookItemType>

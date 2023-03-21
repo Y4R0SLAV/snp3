@@ -1,13 +1,8 @@
 import {FC} from 'react'
 import s from './BookItem.module.css'
 import {useDispatch} from 'react-redux'
-import {
-	redactoringType,
-	setCurrentBook,
-	setModalType,
-	showingType,
-	toggleModalWindow,
-} from 'reducers/books'
+import {setCurrentBook, setModalType, toggleModalWindow} from 'reducers/books'
+import {redactoringType, showingType} from 'reducers/types'
 import {Button} from 'src/components/common/Button/Button'
 import {formateString} from 'src/utils/functions'
 
