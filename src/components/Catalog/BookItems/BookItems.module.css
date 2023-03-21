@@ -7,6 +7,6 @@
 }
 
 .warning {
-	color: red;
+	color: var(--warning-color);
 	font-size: 32px;
 }

@@ -1,9 +1,29 @@
 :root {
+	--button-border-color: rgb(3, 72, 3);
+
 	--button-main-color: rgb(3, 72, 3);
-	--button-hover-color: rgb(11, 120, 11);
 	--button-main-background: #fff;
+
+	--button-hover-color: rgb(11, 120, 11);
 	--button-hover-background: #e9e9c0;
 
 	--button-padding: 5px;
-  --button-negative-padding: -5px;
+	--button-negative-padding: -5px;
+
+	--modal-border-color: rgb(119, 31, 31);
+	--modal-content-color: red;
+
+	--input-border-color: #f4f0e9;
+	--input-background-color: #f9f7f4;
+
+	--warning-color: red;
+
+	--header-border-color: red;
+	--header-content-color: #4a4a4a;
+
+	--catalog-border-color: yellowgreen;
+
+	--footer-content-color: #4a4a4a;
+
+	--book-border-color: #eee;
 }

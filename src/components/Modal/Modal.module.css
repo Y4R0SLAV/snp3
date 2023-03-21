@@ -17,7 +17,7 @@
 }
 
 .content {
-	border: 2px solid rgb(119, 31, 31);
+	border: 2px solid var(--modal-border-color);
 	background: #fff;
 	width: 70vw;
 	max-height: 99vh;
@@ -30,7 +30,7 @@
 	margin-bottom: 10px;
 	padding: 10px 0;
 	font-size: 24px;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid var(--modal-border-color);
 }
 
 @media (max-width: 1140px) {

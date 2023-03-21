@@ -10,5 +10,5 @@ button {
 	cursor: pointer;
 	margin: var(--button-negative-padding);
 	padding: var(--button-padding);
-	/* стили чтобы высота/ширина Button из common совпала со стоковой кнопкой */
+	/* margin+padding чтобы высота/ширина Button из common совпала со стоковой кнопкой */
 }
