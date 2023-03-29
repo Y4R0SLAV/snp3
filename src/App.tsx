@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useDispatch, useSelector} from 'react-redux'
+
+import {Footer} from './components/Footer/Footer'
+import {Header} from './components/Header/Header'
+import {Catalog} from './components/Catalog/Catalog'
+import {selectShowModal, toggleModalWindow} from 'reducers/books'
+
+import {Modal} from './components/Modal/Modal'
+import {ModalContent} from './components/Modal/ModalContent/ModalContent'
+
+import './App.css'
+// в App.css глобальные переменные
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch()
+	const show = useSelector(selectShowModal)
+
+	const toggleModal = () => {
+		dispatch(toggleModalWindow())
+	}
+
+	return (
+		<div>
+			<Modal
+				isVisible={show}
+				onClose={toggleModal}
+			>
+				<ModalContent />
+			</Modal>
+
+			<Header />
+			<Catalog />
+			<Footer />
+		</div>
+	)
 }
 
-export default App;
+export default App

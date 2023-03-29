@@ -1,0 +1,6 @@
+.Root {
+	padding: 10px;
+	color: var(--footer-content-color);
+	display: flex;
+	justify-content: center;
+}
