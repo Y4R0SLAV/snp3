@@ -5,8 +5,6 @@
 	padding: 20px;
 }
 
-
-
 .cover {
 	margin: 0 auto;
 	width: 405px;
@@ -25,7 +23,7 @@
 
 .info div {
 	margin-bottom: 5px;
-	color: red;
+	color: var(--modal-content-color);
 	overflow-wrap: break-word;
 }
 

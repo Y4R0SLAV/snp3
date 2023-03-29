@@ -2,16 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
-
-export const AllType = 'All'
-export const ActiveType = 'Active'
-export const CompletedType = 'Completed'
-
-export const showingType = 'showing'
-export const addingType = 'adding'
-export const redactoringType = 'redactoring'
-
-export type ModalType = typeof showingType | typeof addingType | typeof redactoringType
+import {ModalType, addingType} from './types'
 
 interface BooksState {
 	books: Array<BookItemType>
@@ -35,8 +26,17 @@ export const booksSlice = createSlice({
 			state.books.push({...action.payload, id: Date.now()})
 		},
 
-		removeBook: (state, action: PayloadAction<string>) => {
-			state.books = [...state.books.filter((book) => book.id !== +action.payload)]
+		editBook: (state, action: PayloadAction<BookItemType>) => {
+			state.books = state.books.map((book) => {
+				if (book.id === action.payload.id) {
+					return (book = action.payload)
+				}
+				return book
+			})
+		},
+
+		removeBook: (state, action: PayloadAction<number>) => {
+			state.books = [...state.books.filter((book) => book.id !== action.payload)]
 		},
 
 		initializeBooks: (state, action: PayloadAction<Array<BookItemType>>) => {
@@ -63,6 +63,7 @@ export const {
 	setModalType,
 	toggleModalWindow,
 	setCurrentBook,
+	editBook,
 } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books

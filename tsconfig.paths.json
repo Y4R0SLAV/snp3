@@ -4,7 +4,8 @@
 		"paths": {
 			"reducers/*": ["./src/redux/reducers/*"],
 			"src/*": ["./src/*"],
-			"components/*": ["./src/components/*"]
+			"components/*": ["./src/components/*"],
+			"common/*": ["./src/components/common/*"]
 		}
 	}
 }

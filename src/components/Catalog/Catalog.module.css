@@ -1,7 +1,10 @@
 .Root {
-	border: 1px dashed yellowgreen;
+	border: 1px dashed var(--catalog-border-color);
 	display: flex;
 	justify-content: center;
+	align-items: flex-start;
+
+	min-height: calc(100vh - 128px);
 }
 
 .content {
@@ -10,4 +13,5 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	padding-top: 10px;
 }

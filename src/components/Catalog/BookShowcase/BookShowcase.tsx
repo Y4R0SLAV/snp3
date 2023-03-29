@@ -1,8 +1,8 @@
-import s from './ModalShowing.module.css'
+import s from './BookShowcase.module.css'
 import {selectBook} from 'reducers/books'
 import {useSelector} from 'react-redux'
 
-const BookShowcase = () => {
+export const BookShowcase = () => {
 	const book = useSelector(selectBook)
 
 	if (book) {
@@ -19,7 +19,7 @@ const BookShowcase = () => {
 					<div>Author: {book.author}</div>
 					<div>ISBN-13: {book.ISBN}</div>
 					<div>Published in: {book.publishYear}</div>
-					<div>Published: {book.publisher}</div>
+					<div>Published by: {book.publisher}</div>
 					<div>Description: {book.description}</div>
 				</div>
 			</div>
@@ -27,5 +27,3 @@ const BookShowcase = () => {
 	}
 	return <>Error: book is not selected</>
 }
-
-export default BookShowcase

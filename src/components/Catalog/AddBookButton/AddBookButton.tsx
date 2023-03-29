@@ -1,6 +1,7 @@
-import s from './AddBookButton.module.css'
 import {useDispatch} from 'react-redux'
-import {setModalType, toggleModalWindow, addingType} from 'reducers/books'
+import {setModalType, toggleModalWindow} from 'reducers/books'
+import {addingType} from 'reducers/types'
+import {Button} from 'common/Button/Button'
 
 export const AddBookButton = () => {
 	const dispatch = useDispatch()
@@ -10,12 +11,5 @@ export const AddBookButton = () => {
 		dispatch(toggleModalWindow())
 	}
 
-	return (
-		<div
-			className={s.Root}
-			onClick={clickHandler}
-		>
-			Add a book
-		</div>
-	)
+	return <Button onClick={clickHandler}>Add a book</Button>
 }

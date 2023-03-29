@@ -1,7 +1,7 @@
 .Root {
-	border: 1px solid red;
+	border: 1px solid var(--header-border-color);
 	padding: 20px;
 	font-size: 26px;
-	color: #4a4a4a;
+	color: var(--header-content-color);
 	pointer-events: none;
 }
