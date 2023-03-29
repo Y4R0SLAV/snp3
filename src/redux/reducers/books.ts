@@ -9,6 +9,7 @@ interface BooksState {
 	currentBook?: BookItemType
 	modalType: ModalType
 	showModal: boolean
+	str: string
 }
 
 const initialState: BooksState = {
@@ -16,6 +17,7 @@ const initialState: BooksState = {
 	currentBook: undefined,
 	modalType: addingType,
 	showModal: false,
+	str: '',
 }
 
 export const booksSlice = createSlice({
@@ -53,6 +55,9 @@ export const booksSlice = createSlice({
 		setCurrentBook: (state, action: PayloadAction<number>) => {
 			state.currentBook = state.books.find((book) => book.id === action.payload)
 		},
+		setStr: (state, action: PayloadAction<string>) => {
+			state.str = action.payload
+		},
 	},
 })
 
@@ -64,11 +69,13 @@ export const {
 	toggleModalWindow,
 	setCurrentBook,
 	editBook,
+	setStr,
 } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
 export const selectModalType = (state: RootState) => state.books.modalType
 export const selectShowModal = (state: RootState) => state.books.showModal
 export const selectBook = (state: RootState) => state.books.currentBook
+export const selectStr = (state: RootState) => state.books.str
 
 export default booksSlice.reducer

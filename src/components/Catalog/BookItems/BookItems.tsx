@@ -1,13 +1,16 @@
+import {Fragment} from 'react'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {initializeBooks, selectBooks} from 'reducers/books'
+import {initializeBooks, selectBooks, selectStr} from 'reducers/books'
 import {useEffect} from 'react'
 import {getBooksLS, setBooksLS} from 'src/localStorageInteraction'
 
 export const BookItems = () => {
 	const books = useSelector(selectBooks)
 	const dispatch = useDispatch()
+
+	const str = useSelector(selectStr)
 
 	useEffect(() => {
 		// инициализация книжек
@@ -27,20 +30,23 @@ export const BookItems = () => {
 				<div className={s.warning}>There are no books in the catalog here yet.</div>
 			)}
 			{books.map((book) => {
-				return (
-					<BookItem
-						key={book.id}
-						title={book.title}
-						id={book.id}
-						ISBN={book.ISBN}
-						author={book.author}
-						description={book.description}
-						imgSrc={book.imgSrc}
-						publishYear={book.publishYear}
-						publisher={book.publisher}
-						format='icon'
-					/>
-				)
+				if (book.author.includes(str) || book.title.includes(str)) {
+					return (
+						<BookItem
+							key={book.id}
+							title={book.title}
+							id={book.id}
+							ISBN={book.ISBN}
+							author={book.author}
+							description={book.description}
+							imgSrc={book.imgSrc}
+							publishYear={book.publishYear}
+							publisher={book.publisher}
+							format='icon'
+						/>
+					)
+				}
+				return <Fragment key={book.id} />
 			})}
 		</div>
 	)
