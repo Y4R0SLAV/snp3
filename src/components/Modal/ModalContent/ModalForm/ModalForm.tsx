@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
 			'Invalid year of published: The book should be printed on paper, not written on clay tablets',
 		)
 		.lessThan(
-			getCurrentYear(),
+			getCurrentYear() + 1,
 			'Invalid year of published: Еhe entered value exceeds the current year',
 		),
 	imgSrc: Yup.string()
@@ -55,6 +55,17 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 		formValue = initialValue
 	}
 
+	const addHandler = () => {
+		setSubmitButtonState('add')
+	}
+	const saveHandler = () => {
+		setSubmitButtonState('save')
+	}
+	const removeHandler = () => {
+		dispatch(removeBook(initialValue?.id || -1))
+		dispatch(toggleModalWindow())
+	}
+
 	return (
 		<Formik
 			enableReinitialize
@@ -70,12 +81,6 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 						const newBook = {...values, id: initialValue?.id || -1}
 						dispatch(editBook(newBook))
 						break
-
-					case 'remove':
-						// то же самое, id всегда найдётся
-						dispatch(removeBook(initialValue?.id || -1))
-						break
-
 					default:
 						break
 				}
@@ -144,19 +149,20 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 					{editing ? (
 						<div className={s.buttons}>
 							<FormikButton
-								onClick={() => setSubmitButtonState('save')}
+								onClick={() => saveHandler()}
 								title='Save'
 							/>
 
 							<FormikButton
-								onClick={() => setSubmitButtonState('remove')}
+								onClick={() => removeHandler()}
 								title='Remove'
+								type='button'
 							/>
 						</div>
 					) : (
 						<FormikButton
 							title='Add the book to a catalog'
-							onClick={() => setSubmitButtonState('add')}
+							onClick={() => addHandler()}
 						/>
 					)}
 				</Form>
