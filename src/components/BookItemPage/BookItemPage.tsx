@@ -15,7 +15,7 @@ export const BookItemPage = () => {
 	useEffect(() => {
 		dispatch(setCurrentBook(+id))
 	}, [dispatch, id, books])
-	// books нужны чтобы избежать выбора книги, до инициализации, и избежать получения undefined вместо искомой
+	// books нужны чтобы избежать выбора книги до инициализации, и избежать получения undefined вместо искомой
 
 	if (book) {
 		return (
