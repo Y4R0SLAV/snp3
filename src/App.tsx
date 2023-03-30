@@ -1,12 +1,18 @@
+import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {Footer} from './components/Footer/Footer'
-import {Header} from './components/Header/Header'
+import {Layout} from './components/Layout/Layout'
 import {Catalog} from './components/Catalog/Catalog'
-import {selectShowModal, toggleModalWindow} from 'reducers/books'
+import {initializeBooks, selectBooks, selectShowModal, toggleModalWindow} from 'reducers/books'
 
 import {Modal} from './components/Modal/Modal'
 import {ModalContent} from './components/Modal/ModalContent/ModalContent'
+
+import {BookItemPage} from './components/BookItemPage/BookItemPage'
+import {getBooksLS, setBooksLS} from './localStorageInteraction'
+
+import {Routes} from 'react-router'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import './App.css'
 // в App.css глобальные переменные
@@ -19,8 +25,22 @@ function App() {
 		dispatch(toggleModalWindow())
 	}
 
+	const books = useSelector(selectBooks)
+
+	useEffect(() => {
+		// инициализация книжек
+		const booksFromLS = getBooksLS()
+		if (booksFromLS.length > 0) {
+			dispatch(initializeBooks(booksFromLS))
+		}
+	}, [dispatch])
+
+	useEffect(() => {
+		setBooksLS(books)
+	}, [books])
+
 	return (
-		<div>
+		<Router>
 			<Modal
 				isVisible={show}
 				onClose={toggleModal}
@@ -28,10 +48,19 @@ function App() {
 				<ModalContent />
 			</Modal>
 
-			<Header />
-			<Catalog />
-			<Footer />
-		</div>
+			<Layout>
+				<Routes>
+					<Route
+						path='/'
+						element={<Catalog />}
+					/>
+					<Route
+						path='/items/:id'
+						element={<BookItemPage />}
+					/>
+				</Routes>
+			</Layout>
+		</Router>
 	)
 }
 

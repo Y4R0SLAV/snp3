@@ -2,27 +2,12 @@ import {Fragment} from 'react'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {initializeBooks, selectBooks, selectStr} from 'reducers/books'
-import {useEffect} from 'react'
-import {getBooksLS, setBooksLS} from 'src/localStorageInteraction'
+import { selectBooks, selectStr} from 'reducers/books'
 
 export const BookItems = () => {
 	const books = useSelector(selectBooks)
-	const dispatch = useDispatch()
 
 	const str = useSelector(selectStr)
-
-	useEffect(() => {
-		// инициализация книжек
-		const booksFromLS = getBooksLS()
-		if (booksFromLS.length > 0) {
-			dispatch(initializeBooks(booksFromLS))
-		}
-	}, [dispatch])
-
-	useEffect(() => {
-		setBooksLS(books)
-	}, [books])
 
 	return (
 		<div className={s.Root}>
