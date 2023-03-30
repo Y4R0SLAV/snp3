@@ -1,0 +1,84 @@
+{
+	"books": [
+		{
+			"id": 1,
+			"title": "The Greatness Mindset: Unlock the Power of Your Mind and Live Your Best Life Today",
+			"author": "Lewis Howes",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9781401971908.jpg?height=500&v=v2-74ea0737a16f1fc14104a448e6f20a52",
+			"ISBN": "9781401971908",
+			"publishYear": 2023,
+			"publisher": "Hay House",
+			"description": "Greatness is inside you. Now is the time to wake it up. Are you living your most authentic life? Are you leaning into your purpose or running away from it? Is this the story you want your future self to tell or do you ache for something more? Through his breakthrough discoveries, New York Times best-selling author Lewis Howes reveals how you can rewrite your past to propel yourself into a powerful and abundant future. "
+		},
+		{
+			"id": 2,
+			"title": "The White Lady",
+			"author": "Jacqueline Winspear",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9780062867988.jpg?height=500&v=v2-ad469d70173e9d98ea1518a8c1f7013d",
+			"ISBN": "9780062867988",
+			"publishYear": 2023,
+			"publisher": "Harper",
+			"description": "The White Lady introduces yet another extraordinary heroine from Jacqueline Winspear, creator of the best-selling Maisie Dobbs series. This heart-stopping novel, set in Post WWII Britain in 1947, follows the coming of age and maturity of former wartime operative Elinor White--veteran of two wars, trained killer, protective of her anonymity--when she is drawn back into the world of menace she has been desperate to leave behind."
+		},
+		{
+			"id": 3,
+			"title": "The Candy House",
+			"author": "Jennifer Egan",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9781476716763.jpg?height=500&v=v2-8403a68974712ffcaffd9c30a45b611e",
+			"ISBN": "9781476716763",
+			"publishYear": 2022,
+			"publisher": "Scribner Book Company",
+			"description": "The Candy House opens with the staggeringly brilliant Bix Bouton, whose company, Mandala, is so successful that he is \"one of those tech demi-gods with whom we're all on a first name basis.\" Bix is forty, with four kids, restless, and desperate for a new idea, when he stumbles into a conversation group, mostly Columbia professors, one of whom is experimenting with downloading or \"externalizing\" memory. Within a decade, Bix's new technology, \"Own Your Unconscious\"--which allows you access to every memory you've ever had, and to share your memories in exchange for access to the memories of others--has seduced multitudes."
+		},
+		{
+			"id": 4,
+			"title": "How to Be a Badass Lawyer: The Unexpected and Simple Guide to Less Stress and Greater Personal Development Through Mindfulness and Compassion",
+			"author": "Claire E. Parsons",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9798987088616.jpg?height=500&v=v2-cd0688bbb7dbfbdbad8db0dd00000000",
+			"ISBN": "9798987088616",
+			"publishYear": 2022,
+			"publisher": "Claire E. Parsons",
+			"description": "What is a badass lawyer? A badass lawyer is an attorney who loves, trusts, cares for, and honors themselves as they serve the needs of clients. And this is a badass book. It's for lawyers looking for better ways to reduce stress, improve relationships, enjoy better health, and curb overthinking. It's actually the best book about lawyer wellness - that's been written by a practicing attorney (and mom) - that you will ever read."
+		},
+		{
+			"id": 5,
+			"title": "1984",
+			"author": "George Orwell",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9780451524935.jpg?height=500&v=v2",
+			"ISBN": "9798987088616",
+			"publishYear": 1950,
+			"publisher": "Signet Book",
+			"description": "1984 has come and gone, but George Orwell's prophetic, nightmare vision in 1949 of the world we were becoming is timelier than ever. \"1984\" is still the great modern classic \"negative Utopia\" - a startling original and haunting novel that creates an imaginary world that is completely convincing from the first sentence to the last four words. No one can deny this novel's power, its hold on the imagination of whole generations, or the power of its admonitions - a power that seems to grow, not lessen, with the passage of time."
+		},
+		{
+			"id": 6,
+			"title": "These Precious Days: Essays",
+			"author": "Ann Patchett",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9780063092792.jpg?height=500&v=v2-eaa2d231ddcc4e5c529200dd00000000",
+			"ISBN": "9780063092792",
+			"publishYear": 2022,
+			"publisher": "Harper Perennial",
+			"description": "\"Any story that starts will also end.\" As a writer, Ann Patchett knows what the outcome of her fiction will be. Life, however, often takes turns we do not see coming. Patchett ponders this truth in these wise essays that afford a fresh and intimate look into her mind and heart. "
+		},
+		{
+			"id": 7,
+			"title": "Real Lifes",
+			"author": "Brandon Taylor",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9780525538899.jpg?height=500&v=v2",
+			"ISBN": "9780525538899",
+			"publishYear": 2021,
+			"publisher": "Riverhead Books",
+			"description": "Almost everything about Wallace is at odds with the Midwestern university town where he is working uneasily toward a biochem degree. An introverted young man from Alabama, black and queer, he has left behind his family without escaping the long shadows of his childhood. For reasons of self-preservation, Wallace has enforced a wary distance even within his own circle of friends--some dating each other, some dating women, some feigning straightness. But over the course of a late-summer weekend, a series of confrontations with colleagues, and an unexpected encounter with an ostensibly straight, white classmate, conspire to fracture his defenses while exposing long-hidden currents of hostility and desire within their community. "
+		},
+		{
+			"id": 8,
+			"title": "The Odyssey",
+			"author": "Homer",
+			"imgSrc": "https://images-us.bookshop.org/ingram/9780393356250.jpg?height=500&v=v2",
+			"ISBN": "9780393356250",
+			"publishYear": 2018,
+			"publisher": "W. W. Norton & Company",
+			"description": "Composed at the rosy-fingered dawn of world literature almost three millennia ago, The Odyssey is a poem about violence and the aftermath of war; about wealth, poverty and power; about marriage and family; about travelers, hospitality, and the yearning for home. This fresh, authoritative translation captures the beauty of this ancient poem as well as the drama of its narrative. Its characters are unforgettable, none more so than the \"complicated\" hero himself, a man of many disguises, many tricks, and many moods, who emerges in this version as a more fully rounded human being than ever before. Written in iambic pentameter verse and a vivid, contemporary idiom, Emily Wilson's Odyssey sings with a voice that echoes Homer's music; matching the number of lines in the Greek original, the poem sails along at Homer's swift, smooth pace. A fascinating, informative introduction explores the Bronze Age milieu that produced the epic, the poem's major themes, the controversies about its origins, and the unparalleled scope of its impact and influence. Maps drawn especially for this volume, a pronunciation glossary, and extensive notes and summaries of each book make this is an Odyssey that will be treasured by a new generation of readers."
+		}
+	]
+}
