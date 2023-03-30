@@ -9,7 +9,11 @@ export const StringInput = () => {
 	const dispatch = useDispatch()
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchParams({search: e.currentTarget.value})
+		const search = e.currentTarget.value
+		if (!search) {
+			return setSearchParams({})
+		}
+		setSearchParams({search})
 	}
 
 	const [searchParams, setSearchParams] = useSearchParams()
