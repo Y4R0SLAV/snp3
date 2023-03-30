@@ -50,5 +50,18 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 		)
 	}
 
-	return <></>
+	return (
+		<div className={s.Root}>
+			<div className={s.img}>
+				<img
+					src={imgSrc}
+					alt=''
+				/>
+			</div>
+			<div className={s.info}>
+				<div className={s.title}>{formateString(title)}</div>
+				<div className={s.author}>{formateString(author)}</div>
+			</div>
+		</div>
+	)
 }
