@@ -58,6 +58,13 @@ export const booksSlice = createSlice({
 		setStr: (state, action: PayloadAction<string>) => {
 			state.str = action.payload
 		},
+
+		
+		// для redux-saga
+		fetchBooks: (state) => {},
+		asyncAddBook: (state, action: PayloadAction<BookItemType>) => {},
+		asyncRemoveBook: (state, action: PayloadAction<number>) => {},
+		asyncEditBook: (state, action: PayloadAction<BookItemType>) => {},
 	},
 })
 
@@ -70,6 +77,10 @@ export const {
 	setCurrentBook,
 	editBook,
 	setStr,
+	fetchBooks,
+	asyncAddBook,
+	asyncRemoveBook,
+	asyncEditBook,
 } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
