@@ -9,7 +9,7 @@
 }
 
 .img {
-	width: 180px;
+	width: 157px;
 	height: 280px;
 	padding-bottom: 5px;
 }
@@ -17,7 +17,7 @@
 img {
 	max-width: 100%;
 	min-height: 100%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .info {

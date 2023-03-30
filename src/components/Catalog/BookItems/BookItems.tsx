@@ -1,8 +1,8 @@
 import {Fragment} from 'react'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
-import {useSelector, useDispatch} from 'react-redux'
-import { selectBooks, selectStr} from 'reducers/books'
+import {useSelector} from 'react-redux'
+import {selectBooks, selectStr} from 'reducers/books'
 
 export const BookItems = () => {
 	const books = useSelector(selectBooks)
