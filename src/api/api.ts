@@ -2,7 +2,7 @@ import axios from 'axios'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 const instance = axios.create({
-	baseURL: `http://localhost:3001/books`,
+	baseURL: `https://json-server-two-gilt.vercel.app/books`,
 })
 
 export const bookApi = {
