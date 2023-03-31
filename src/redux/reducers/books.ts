@@ -1,8 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
-import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 import {ModalType, addingType} from './types'
+
+export interface BookItemType {
+	id: number
+	title: string
+	author: string
+	imgSrc: string
+	ISBN: string
+	publishYear: number
+	publisher: string
+	description: string
+}
 
 interface BooksState {
 	books: Array<BookItemType>

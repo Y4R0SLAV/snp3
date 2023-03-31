@@ -1,7 +1,6 @@
 import {put, takeEvery, call} from 'redux-saga/effects'
 import {bookApi} from 'src/api/api'
-import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
-import {initializeBooks, addBook, removeBook, editBook} from 'reducers/books'
+import {initializeBooks, addBook, removeBook, editBook, BookItemType} from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
 
 function* fetchBooksWorker() {
