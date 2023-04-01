@@ -28,6 +28,7 @@ export const StringInput = () => {
 			type='text'
 			value={str}
 			onChange={(e) => onChangeHandler(e)}
+			placeholder='Search a book'
 		/>
 	)
 }
