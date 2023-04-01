@@ -6,8 +6,11 @@ const instance = axios.create({
 })
 
 export const bookApi = {
-	async getBooks() {
-		return instance.get<BookItemType[]>('').then((response) => response.data)
+	async getBooks(query?: string) {
+		return instance.get<BookItemType[]>(`?q=${query}`).then((response) => {
+			console.log(response.data, query)
+			return response.data
+		})
 	},
 	async addBook(book: BookItemType) {
 		return instance.post('', book)

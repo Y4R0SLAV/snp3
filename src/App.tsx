@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import {Layout} from './components/Layout/Layout'
 import {Catalog} from './components/Catalog/Catalog'
-import {fetchBooks, selectShowModal, toggleModalWindow} from 'reducers/books'
+import {fetchBooks, selectShowModal, selectStr, toggleModalWindow} from 'reducers/books'
 
 import {Modal} from './components/Modal/Modal'
 import {ModalContent} from './components/Modal/ModalContent/ModalContent'
@@ -19,15 +19,15 @@ import './App.css'
 function App() {
 	const dispatch = useDispatch()
 	const show = useSelector(selectShowModal)
+	const query = useSelector(selectStr)
 
 	const toggleModal = () => {
 		dispatch(toggleModalWindow())
 	}
 
 	useEffect(() => {
-		// инициализация книжек
-		dispatch(fetchBooks())
-	}, [dispatch])
+		dispatch(fetchBooks(query))
+	}, [dispatch, query])
 
 	return (
 		<Router>

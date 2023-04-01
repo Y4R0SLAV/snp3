@@ -3,8 +3,8 @@ import {bookApi} from 'src/api/api'
 import {initializeBooks, addBook, removeBook, editBook, BookItemType} from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
 
-function* fetchBooksWorker() {
-	const data: BookItemType[] = yield call(bookApi.getBooks)
+function* fetchBooksWorker(action: PayloadAction<string>) {
+	const data: BookItemType[] = yield call(bookApi.getBooks, action.payload)
 	yield put(initializeBooks(data))
 }
 

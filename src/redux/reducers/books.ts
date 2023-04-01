@@ -69,9 +69,8 @@ export const booksSlice = createSlice({
 			state.str = action.payload
 		},
 
-		
 		// для redux-saga
-		fetchBooks: (state) => {},
+		fetchBooks: (state, action: PayloadAction<string>) => {},
 		asyncAddBook: (state, action: PayloadAction<BookItemType>) => {},
 		asyncRemoveBook: (state, action: PayloadAction<number>) => {},
 		asyncEditBook: (state, action: PayloadAction<BookItemType>) => {},
