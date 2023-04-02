@@ -13,13 +13,9 @@ export const StringInput = () => {
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const search = e.currentTarget.value
+		
 		setValue(e.currentTarget.value)
-
-		if (search) {
-			setSearchParams({search})
-		} else {
-			setSearchParams({})
-		}
+		search ? setSearchParams({search}) : setSearchParams({})
 	}
 
 	const debouncedHandler = (search: string) => {
