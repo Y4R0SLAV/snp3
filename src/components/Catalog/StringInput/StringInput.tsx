@@ -1,32 +1,42 @@
 import s from './StringInput.module.css'
-import {useDispatch, useSelector} from 'react-redux'
-import {selectStr, setStr} from 'reducers/books'
+import {useDispatch} from 'react-redux'
 import {useSearchParams} from 'react-router-dom'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {useDebounce} from 'src/hooks/useDebounce'
+import {setStr} from 'reducers/books'
 
 export const StringInput = () => {
-	const str = useSelector(selectStr)
 	const dispatch = useDispatch()
+
+	const [searchParams, setSearchParams] = useSearchParams()
+	const [value, setValue] = useState(searchParams.get('search') || '')
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const search = e.currentTarget.value
-		if (!search) {
-			return setSearchParams({})
+		setValue(e.currentTarget.value)
+
+		if (search) {
+			setSearchParams({search})
+		} else {
+			setSearchParams({})
 		}
-		setSearchParams({search})
 	}
 
-	const [searchParams, setSearchParams] = useSearchParams()
+	const debouncedHandler = (search: string) => {
+		dispatch(setStr(search))
+	}
+
+	const debounceOnChange = useDebounce(debouncedHandler, 200)
 
 	useEffect(() => {
-		dispatch(setStr(searchParams.get('search') || ''))
-	}, [dispatch, searchParams])
+		debounceOnChange(value)
+	}, [debounceOnChange, value])
 
 	return (
 		<input
 			className={s.Root}
 			type='text'
-			value={str}
+			value={value}
 			onChange={(e) => onChangeHandler(e)}
 			placeholder='Search a book'
 		/>
