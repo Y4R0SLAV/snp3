@@ -8,7 +8,6 @@ const instance = axios.create({
 export const bookApi = {
 	async getBooks(query?: string) {
 		return instance.get<BookItemType[]>(`?q=${query}`).then((response) => {
-			console.log(response.data, query)
 			return response.data
 		})
 	},
