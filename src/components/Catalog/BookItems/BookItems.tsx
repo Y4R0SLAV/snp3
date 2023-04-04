@@ -2,7 +2,7 @@ import {Fragment} from 'react'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {initializeBooks, selectBooks, selectStr} from 'reducers/books'
+import {initializeBooks, selectBooks, selectSearchQuery} from 'reducers/books'
 import {useEffect} from 'react'
 import {getBooksLS, setBooksLS} from 'src/localStorageInteraction'
 
@@ -10,7 +10,7 @@ export const BookItems = () => {
 	const books = useSelector(selectBooks)
 	const dispatch = useDispatch()
 
-	const str = useSelector(selectStr)
+	const query = useSelector(selectSearchQuery)
 
 	useEffect(() => {
 		// инициализация книжек
@@ -30,7 +30,7 @@ export const BookItems = () => {
 				<div className={s.warning}>There are no books in the catalog here yet.</div>
 			)}
 			{books.map((book) => {
-				if (book.author.includes(str) || book.title.includes(str)) {
+				if (book.author.includes(query) || book.title.includes(query)) {
 					return (
 						<BookItem
 							key={book.id}
