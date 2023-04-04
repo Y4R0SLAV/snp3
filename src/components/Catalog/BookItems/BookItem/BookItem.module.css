@@ -9,7 +9,7 @@
 }
 
 .img {
-	width: 180px;
+	width: 157px;
 	height: 280px;
 	padding-bottom: 5px;
 }
@@ -17,7 +17,7 @@
 img {
 	max-width: 100%;
 	min-height: 100%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .info {
@@ -33,9 +33,9 @@ img {
 	color: #3e3e3e;
 }
 
-.btns {
-	display: flex;
-	gap: 10px;
-
-	margin: 10px 0 5px;
+@media (max-width: 560px) {
+	.img {
+		width: 150px;
+		height: 228px;
+	}
 }
