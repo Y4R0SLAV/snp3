@@ -11,9 +11,10 @@ export const BookItems = () => {
 	const books = useSelector(selectBooks)
 	const query = useSelector(selectSearchQuery)
 
-	const getDefaultFiltered = getFilteredBooks(books, query, query, 'authorOrTitle')
-
-	const [filteredBooks, setFilteredBooks] = useState(getDefaultFiltered)
+	// первый query - поиск по автору, второй по названию
+	const [filteredBooks, setFilteredBooks] = useState(
+		getFilteredBooks(books || [], query, query, 'authorOrTitle'),
+	)
 
 	const dispatch = useDispatch()
 
@@ -30,8 +31,8 @@ export const BookItems = () => {
 	}, [books])
 
 	useEffect(() => {
-		setFilteredBooks(getDefaultFiltered)
-	}, [books, query, getDefaultFiltered])
+		setFilteredBooks(getFilteredBooks(books, query, query, 'authorOrTitle'))
+	}, [books, query])
 
 	return (
 		<div className={s.Root}>
