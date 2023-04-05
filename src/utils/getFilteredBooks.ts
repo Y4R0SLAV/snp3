@@ -36,6 +36,6 @@ export const getFilteredBooks = (
 				return exhaustiveCheck(filterField)
 		}
 	})
-	console.log(filteredBooks)
+	
 	return filteredBooks
 }
