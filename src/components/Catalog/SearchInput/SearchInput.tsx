@@ -1,11 +1,11 @@
-import s from './StringInput.module.css'
+import s from './SearchInput.module.css'
 import {useDispatch} from 'react-redux'
 import {useSearchParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import {useDebounce} from 'src/hooks/useDebounce'
-import {setStr} from 'reducers/books'
+import {setSearchQuery} from 'reducers/books'
 
-export const StringInput = () => {
+export const SearchInput = () => {
 	const dispatch = useDispatch()
 
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -13,13 +13,13 @@ export const StringInput = () => {
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const search = e.currentTarget.value
-		
+
 		setValue(e.currentTarget.value)
 		search ? setSearchParams({search}) : setSearchParams({})
 	}
 
 	const debouncedHandler = (search: string) => {
-		dispatch(setStr(search))
+		dispatch(setSearchQuery(search))
 	}
 
 	const debounceOnChange = useDebounce(debouncedHandler, 200)
