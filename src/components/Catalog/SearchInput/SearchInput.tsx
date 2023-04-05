@@ -1,11 +1,11 @@
-import s from './StringInput.module.css'
+import s from './SearchInput.module.css'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectStr, setStr} from 'reducers/books'
+import {selectSearchQuery, setSearchQuery} from 'reducers/books'
 import {useSearchParams} from 'react-router-dom'
 import {useEffect} from 'react'
 
-export const StringInput = () => {
-	const str = useSelector(selectStr)
+export const SearchInput = () => {
+	const query = useSelector(selectSearchQuery)
 	const dispatch = useDispatch()
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,14 +19,14 @@ export const StringInput = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 
 	useEffect(() => {
-		dispatch(setStr(searchParams.get('search') || ''))
+		dispatch(setSearchQuery(searchParams.get('search') || ''))
 	}, [dispatch, searchParams])
 
 	return (
 		<input
 			className={s.Root}
 			type='text'
-			value={str}
+			value={query}
 			onChange={(e) => onChangeHandler(e)}
 		/>
 	)
