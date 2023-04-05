@@ -20,6 +20,7 @@ interface BooksState {
 	modalType: ModalType
 	showModal: boolean
 	searchQuery: string
+	totalBooksCount: number
 }
 
 const initialState: BooksState = {
@@ -28,7 +29,10 @@ const initialState: BooksState = {
 	modalType: addingType,
 	showModal: false,
 	searchQuery: '',
+	totalBooksCount: 0,
 }
+// количество книг не измяется при инициализации книг, т.к. книги инициализируются уже отфильтрованные
+// но изменяется при каждом fetchBooks в saga
 
 export const booksSlice = createSlice({
 	name: 'books',
@@ -68,6 +72,9 @@ export const booksSlice = createSlice({
 		setSearchQuery: (state, action: PayloadAction<string>) => {
 			state.searchQuery = action.payload
 		},
+		setTotalBooksCount: (state, action: PayloadAction<number>) => {
+			state.totalBooksCount = action.payload
+		},
 
 		// для redux-saga
 		fetchBooks: (state, action: PayloadAction<string>) => {},
@@ -86,6 +93,7 @@ export const {
 	setCurrentBook,
 	editBook,
 	setSearchQuery,
+	setTotalBooksCount,
 	fetchBooks,
 	asyncAddBook,
 	asyncRemoveBook,
@@ -97,5 +105,6 @@ export const selectModalType = (state: RootState) => state.books.modalType
 export const selectShowModal = (state: RootState) => state.books.showModal
 export const selectBook = (state: RootState) => state.books.currentBook
 export const selectSearchQuery = (state: RootState) => state.books.searchQuery
+export const selectTotalBooksCount = (state: RootState) => state.books.totalBooksCount
 
 export default booksSlice.reducer

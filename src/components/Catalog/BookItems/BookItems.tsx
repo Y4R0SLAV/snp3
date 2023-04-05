@@ -1,18 +1,22 @@
-import {Fragment} from 'react'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector} from 'react-redux'
-import {selectBooks} from 'reducers/books'
+import {selectBooks, selectTotalBooksCount} from 'reducers/books'
 
 export const BookItems = () => {
-	const books = useSelector(selectBooks)
+	const filteredBooks = useSelector(selectBooks)
+	const totalBooksCount = useSelector(selectTotalBooksCount)
 
 	return (
 		<div className={s.Root}>
-			{books.length === 0 && (
-				<div className={s.warning}>There are no books in the catalog here yet.</div>
-			)}
-			{books.map((book) => (
+			{filteredBooks.length === 0 &&
+				(totalBooksCount > 0 ? (
+					<div className={s.warning}>Nothing was found for your query.</div>
+				) : (
+					<div className={s.warning}>There are no books in the catalog here yet.</div>
+				))}
+
+			{filteredBooks.map((book) => (
 				<BookItem
 					key={book.id}
 					title={book.title}

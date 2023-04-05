@@ -1,11 +1,20 @@
 import {put, takeEvery, call} from 'redux-saga/effects'
 import {bookApi} from 'src/api/api'
-import {initializeBooks, addBook, removeBook, editBook, BookItemType} from 'reducers/books'
+import {
+	initializeBooks,
+	addBook,
+	removeBook,
+	editBook,
+	BookItemType,
+	setTotalBooksCount,
+} from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
 
 function* fetchBooksWorker(action: PayloadAction<string>) {
 	const data: BookItemType[] = yield call(bookApi.getBooks, action.payload)
+	const count: number = yield call(bookApi.getTotalBooksCount)
 	yield put(initializeBooks(data))
+	yield put(setTotalBooksCount(count))
 }
 
 function* addBookWorker(action: PayloadAction<BookItemType>) {
