@@ -20,9 +20,6 @@ export const getFilteredBooks = (
 		const bookAuthorContains = book.author.toLowerCase().includes(authorQuery)
 		const bookTitleContains = book.title.toLowerCase().includes(titleQuery)
 
-		// console.log(bookAuthorContains, bookTitleContains)
-		// console.log(book.author, authorQuery, book.title, titleQuery)
-
 		switch (filterField) {
 			case 'author':
 				return bookAuthorContains
