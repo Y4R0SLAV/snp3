@@ -1,8 +1,10 @@
 import {BookError} from './BookError/BookError'
 import {BookItem} from './BookItem/BookItem'
-import s from './BookItems.module.css'
+import {Toaster} from 'react-hot-toast'
 import {useSelector} from 'react-redux'
 import {selectBooks, selectBooksIsPending, selectTotalBooksCount} from 'reducers/books'
+
+import s from './BookItems.module.css'
 
 export const BookItems = () => {
 	const filteredBooks = useSelector(selectBooks)
@@ -31,6 +33,10 @@ export const BookItems = () => {
 					format='icon'
 				/>
 			))}
+			<Toaster
+				position='top-center'
+				reverseOrder={true}
+			/>
 		</div>
 	)
 }

@@ -12,6 +12,7 @@ import {
 	fetchBooksFailure,
 } from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
+import {toast} from 'react-hot-toast'
 
 function* fetchBooksWorker(action: PayloadAction<string>) {
 	try {
@@ -34,18 +35,33 @@ function* fetchBookWorker(action: PayloadAction<string>) {
 }
 
 function* addBookWorker(action: PayloadAction<BookItemType>) {
-	yield call(bookApi.addBook, action.payload)
-	yield put(addBook(action.payload))
+	try {
+		yield call(bookApi.addBook, action.payload)
+		yield put(addBook(action.payload))
+		yield toast.success('Book has been added')
+	} catch (error: any) {
+		yield toast.error(error.message)
+	}
 }
 
 function* removeBookWorker(action: PayloadAction<number>) {
-	yield call(bookApi.removeBook, action.payload.toString())
-	yield put(removeBook(action.payload))
+	try {
+		yield call(bookApi.removeBook, action.payload.toString())
+		yield put(removeBook(action.payload))
+		yield toast.success('Book has been removed')
+	} catch (error: any) {
+		yield toast.error(error.message)
+	}
 }
 
 function* editBookWorker(action: PayloadAction<BookItemType>) {
-	yield call(bookApi.editBook, action.payload)
-	yield put(editBook(action.payload))
+	try {
+		yield call(bookApi.editBook, action.payload)
+		yield put(editBook(action.payload))
+		yield toast.success('Book has been edited')
+	} catch (error: any) {
+		yield toast.error(error.message)
+	}
 }
 
 export function* bookWatcher() {
