@@ -85,14 +85,18 @@ export const booksSlice = createSlice({
 		fetchBooksSuccess: (state, action: PayloadAction<Array<BookItemType>>) => {
 			state.books = action.payload
 			state.booksIsPending = false
+			state.errorMessage = ''
+			// обнуляю еррор потому что он у меня один для двух полей
 		},
 		fetchBooksFailure: (state, action: PayloadAction<string>) => {
 			state.errorMessage = action.payload
 			state.booksIsPending = false
 		},
+		
 		fetchBookSuccess: (state, action: PayloadAction<BookItemType>) => {
 			state.currentBook = action.payload
 			state.bookIsPending = false
+			state.errorMessage = ''
 		},
 		fetchBookFailure: (state, action: PayloadAction<string>) => {
 			state.errorMessage = action.payload

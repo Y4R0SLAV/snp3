@@ -2,19 +2,19 @@ import {BookError} from './BookError/BookError'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector} from 'react-redux'
-import {selectBooks, selectErrorMessage, selectTotalBooksCount} from 'reducers/books'
+import {selectBooks, selectBooksIsPending, selectTotalBooksCount} from 'reducers/books'
 
 export const BookItems = () => {
 	const filteredBooks = useSelector(selectBooks)
 	const totalBooksCount = useSelector(selectTotalBooksCount)
-	const errorMessage = useSelector(selectErrorMessage)
+	const booksIsPending = useSelector(selectBooksIsPending)
 
 	return (
 		<div className={s.Root}>
 			<BookError
 				currentBooksCount={filteredBooks.length}
 				totalCount={totalBooksCount}
-				errorMessage={errorMessage}
+				isPending={booksIsPending}
 			/>
 
 			{filteredBooks.map((book) => (
