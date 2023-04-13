@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 import {BookItem} from '../Catalog/BookItems/BookItem/BookItem'
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {setCurrentBook, selectBook, selectBooks} from 'reducers/books'
+import {selectBook, selectBooks, fetchBook} from 'reducers/books'
 
 export const BookItemPage = () => {
 	const params = useParams()
@@ -13,7 +13,7 @@ export const BookItemPage = () => {
 	const books = useSelector(selectBooks)
 
 	useEffect(() => {
-		dispatch(setCurrentBook(+id))
+		dispatch(fetchBook(id))
 	}, [dispatch, id, books])
 	// books нужны чтобы избежать выбора книги до инициализации, и избежать получения undefined вместо искомой
 

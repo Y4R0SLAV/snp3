@@ -11,6 +11,11 @@ export const bookApi = {
 			return response.data
 		})
 	},
+	async getBook(id: string) {
+		return instance.get<BookItemType>(`/${id}`).then((response) => {
+			return response.data
+		})
+	},
 	async getTotalBooksCount() {
 		return instance.get<BookItemType[]>('').then((response) => {
 			return response.data.length

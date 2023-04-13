@@ -7,6 +7,7 @@ import {
 	editBook,
 	BookItemType,
 	setTotalBooksCount,
+	setCurrentBook,
 } from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
 
@@ -15,6 +16,11 @@ function* fetchBooksWorker(action: PayloadAction<string>) {
 	const count: number = yield call(bookApi.getTotalBooksCount)
 	yield put(initializeBooks(data))
 	yield put(setTotalBooksCount(count))
+}
+
+function* fetchBookWorker(action: PayloadAction<string>) {
+	const data: BookItemType = yield call(bookApi.getBook, action.payload)
+	yield put(setCurrentBook(data))
 }
 
 function* addBookWorker(action: PayloadAction<BookItemType>) {
@@ -34,6 +40,7 @@ function* editBookWorker(action: PayloadAction<BookItemType>) {
 
 export function* bookWatcher() {
 	yield takeEvery('books/fetchBooks', fetchBooksWorker)
+	yield takeEvery('books/fetchBook', fetchBookWorker)
 	yield takeEvery('books/asyncAddBook', addBookWorker)
 	yield takeEvery('books/asyncRemoveBook', removeBookWorker)
 	yield takeEvery('books/asyncEditBook', editBookWorker)

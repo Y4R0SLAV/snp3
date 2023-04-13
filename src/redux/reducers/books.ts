@@ -66,8 +66,8 @@ export const booksSlice = createSlice({
 		toggleModalWindow: (state) => {
 			state.showModal = !state.showModal
 		},
-		setCurrentBook: (state, action: PayloadAction<number>) => {
-			state.currentBook = state.books.find((book) => book.id === action.payload)
+		setCurrentBook: (state, action: PayloadAction<BookItemType>) => {
+			state.currentBook = action.payload
 		},
 		setSearchQuery: (state, action: PayloadAction<string>) => {
 			state.searchQuery = action.payload
@@ -78,6 +78,7 @@ export const booksSlice = createSlice({
 
 		// для redux-saga
 		fetchBooks: (state, action: PayloadAction<string>) => {},
+		fetchBook: (state, action: PayloadAction<string>) => {},
 		asyncAddBook: (state, action: PayloadAction<BookItemType>) => {},
 		asyncRemoveBook: (state, action: PayloadAction<number>) => {},
 		asyncEditBook: (state, action: PayloadAction<BookItemType>) => {},
@@ -95,6 +96,7 @@ export const {
 	setSearchQuery,
 	setTotalBooksCount,
 	fetchBooks,
+	fetchBook,
 	asyncAddBook,
 	asyncRemoveBook,
 	asyncEditBook,
