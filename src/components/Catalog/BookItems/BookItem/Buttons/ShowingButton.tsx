@@ -9,9 +9,9 @@ export const ShowingButton: React.FC<{id: number}> = ({id}) => {
 	const dispatch = useDispatch()
 
 	const clickHandler = () => {
+		dispatch(fetchBook(id.toString()))
 		dispatch(setModalType(showingType))
 		dispatch(toggleModalWindow())
-		dispatch(fetchBook(id.toString()))
 	}
 
 	return (

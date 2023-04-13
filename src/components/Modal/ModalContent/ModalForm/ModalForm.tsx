@@ -1,13 +1,14 @@
 import {useState} from 'react'
 import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {
 	asyncAddBook,
 	asyncRemoveBook,
 	asyncEditBook,
 	toggleModalWindow,
 	BookItemType,
+	selectBookIsPending,
 } from 'reducers/books'
 
 import {BlockBox} from './FormParts/BlockBox/BlockBox'
@@ -17,6 +18,7 @@ import {FormikButton} from './FormParts/FormikButton/FormikButton'
 
 import s from './ModalForm.module.css'
 import {getCurrentYear} from 'src/utils/functions'
+import Preloader from 'src/components/common/Preloader/Preloader'
 
 const SignupSchema = Yup.object().shape({
 	ISBN: Yup.string().matches(/^[0-9]+$/, 'Invalid ISBN-13: Must be only digits'),
@@ -45,6 +47,11 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 	const dispatch = useDispatch()
 	type submitButtonType = 'add' | 'remove' | 'save'
 	const [submitButtonState, setSubmitButtonState] = useState<submitButtonType>('add')
+
+	const bookIsPending = useSelector(selectBookIsPending)
+	if (bookIsPending) {
+		return <Preloader />
+	}
 
 	let formValue = {
 		title: '',

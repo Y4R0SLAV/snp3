@@ -6,7 +6,8 @@ import {
 	editBook,
 	BookItemType,
 	setTotalBooksCount,
-	setCurrentBook,
+	fetchBookSuccess,
+	fetchBookFailure,
 	fetchBooksSuccess,
 	fetchBooksFailure,
 } from 'reducers/books'
@@ -24,8 +25,12 @@ function* fetchBooksWorker(action: PayloadAction<string>) {
 }
 
 function* fetchBookWorker(action: PayloadAction<string>) {
-	const data: BookItemType = yield call(bookApi.getBook, action.payload)
-	yield put(setCurrentBook(data))
+	try {
+		const data: BookItemType = yield call(bookApi.getBook, action.payload)
+		yield put(fetchBookSuccess(data))
+	} catch (error: any) {
+		yield put(fetchBookFailure(error.message || 'An unknown error occurred'))
+	}
 }
 
 function* addBookWorker(action: PayloadAction<BookItemType>) {

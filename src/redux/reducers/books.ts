@@ -22,6 +22,7 @@ interface BooksState {
 	searchQuery: string
 	totalBooksCount: number
 	booksIsPending: boolean
+	bookIsPending: boolean
 	errorMessage: string
 }
 
@@ -33,9 +34,10 @@ const initialState: BooksState = {
 	searchQuery: '',
 	totalBooksCount: 0,
 	booksIsPending: true,
+	bookIsPending: true,
 	errorMessage: '',
 }
-// book is pending = true, чтобы сразу прелоадер показывать а не ждать запроса fetchBooks, он в любом случае будет вызван
+// book(s) is pending = true, чтобы сразу прелоадер показывать а не ждать запроса fetchBooks, он в любом случае будет вызван
 // количество книг не измяется при инициализации книг, т.к. книги инициализируются уже отфильтрованные
 // но изменяется при каждом fetchBooks в saga
 
@@ -88,12 +90,22 @@ export const booksSlice = createSlice({
 			state.errorMessage = action.payload
 			state.booksIsPending = false
 		},
+		fetchBookSuccess: (state, action: PayloadAction<BookItemType>) => {
+			state.currentBook = action.payload
+			state.bookIsPending = false
+		},
+		fetchBookFailure: (state, action: PayloadAction<string>) => {
+			state.errorMessage = action.payload
+			state.bookIsPending = false
+		},
 
 		// для redux-saga
 		fetchBooks: (state, action: PayloadAction<string>) => {
 			state.booksIsPending = true
 		},
-		fetchBook: (state, action: PayloadAction<string>) => {},
+		fetchBook: (state, action: PayloadAction<string>) => {
+			state.bookIsPending = true
+		},
 		asyncAddBook: (state, action: PayloadAction<BookItemType>) => {},
 		asyncRemoveBook: (state, action: PayloadAction<number>) => {},
 		asyncEditBook: (state, action: PayloadAction<BookItemType>) => {},
@@ -114,6 +126,8 @@ export const {
 	fetchBooksSuccess,
 	fetchBooksFailure,
 	fetchBook,
+	fetchBookSuccess,
+	fetchBookFailure,
 	asyncAddBook,
 	asyncRemoveBook,
 	asyncEditBook,
@@ -125,7 +139,8 @@ export const selectShowModal = (state: RootState) => state.books.showModal
 export const selectBook = (state: RootState) => state.books.currentBook
 export const selectSearchQuery = (state: RootState) => state.books.searchQuery
 export const selectTotalBooksCount = (state: RootState) => state.books.totalBooksCount
-export const selectBookIsPending = (state: RootState) => state.books.booksIsPending
+export const selectBooksIsPending = (state: RootState) => state.books.booksIsPending
+export const selectBookIsPending = (state: RootState) => state.books.bookIsPending
 export const selectErrorMessage = (state: RootState) => state.books.errorMessage
 
 export default booksSlice.reducer
