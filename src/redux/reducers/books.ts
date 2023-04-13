@@ -21,6 +21,8 @@ interface BooksState {
 	showModal: boolean
 	searchQuery: string
 	totalBooksCount: number
+	booksIsPending: boolean
+	errorMessage: string
 }
 
 const initialState: BooksState = {
@@ -30,7 +32,10 @@ const initialState: BooksState = {
 	showModal: false,
 	searchQuery: '',
 	totalBooksCount: 0,
+	booksIsPending: true,
+	errorMessage: '',
 }
+// book is pending = true, чтобы сразу прелоадер показывать а не ждать запроса fetchBooks, он в любом случае будет вызван
 // количество книг не измяется при инициализации книг, т.к. книги инициализируются уже отфильтрованные
 // но изменяется при каждом fetchBooks в saga
 
@@ -55,10 +60,6 @@ export const booksSlice = createSlice({
 			state.books = [...state.books.filter((book) => book.id !== action.payload)]
 		},
 
-		initializeBooks: (state, action: PayloadAction<Array<BookItemType>>) => {
-			state.books = action.payload
-		},
-
 		setModalType: (state, action: PayloadAction<ModalType>) => {
 			state.modalType = action.payload
 		},
@@ -75,9 +76,23 @@ export const booksSlice = createSlice({
 		setTotalBooksCount: (state, action: PayloadAction<number>) => {
 			state.totalBooksCount = action.payload
 		},
+		setBooksIsPending: (state, action: PayloadAction<boolean>) => {
+			state.booksIsPending = action.payload
+		},
+
+		fetchBooksSuccess: (state, action: PayloadAction<Array<BookItemType>>) => {
+			state.books = action.payload
+			state.booksIsPending = false
+		},
+		fetchBooksFailure: (state, action: PayloadAction<string>) => {
+			state.errorMessage = action.payload
+			state.booksIsPending = false
+		},
 
 		// для redux-saga
-		fetchBooks: (state, action: PayloadAction<string>) => {},
+		fetchBooks: (state, action: PayloadAction<string>) => {
+			state.booksIsPending = true
+		},
 		fetchBook: (state, action: PayloadAction<string>) => {},
 		asyncAddBook: (state, action: PayloadAction<BookItemType>) => {},
 		asyncRemoveBook: (state, action: PayloadAction<number>) => {},
@@ -88,14 +103,16 @@ export const booksSlice = createSlice({
 export const {
 	addBook,
 	removeBook,
-	initializeBooks,
 	setModalType,
 	toggleModalWindow,
 	setCurrentBook,
+	setBooksIsPending,
 	editBook,
 	setSearchQuery,
 	setTotalBooksCount,
 	fetchBooks,
+	fetchBooksSuccess,
+	fetchBooksFailure,
 	fetchBook,
 	asyncAddBook,
 	asyncRemoveBook,
@@ -108,5 +125,7 @@ export const selectShowModal = (state: RootState) => state.books.showModal
 export const selectBook = (state: RootState) => state.books.currentBook
 export const selectSearchQuery = (state: RootState) => state.books.searchQuery
 export const selectTotalBooksCount = (state: RootState) => state.books.totalBooksCount
+export const selectBookIsPending = (state: RootState) => state.books.booksIsPending
+export const selectErrorMessage = (state: RootState) => state.books.errorMessage
 
 export default booksSlice.reducer

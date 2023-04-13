@@ -1,21 +1,26 @@
 import {put, takeEvery, call} from 'redux-saga/effects'
 import {bookApi} from 'src/api/api'
 import {
-	initializeBooks,
 	addBook,
 	removeBook,
 	editBook,
 	BookItemType,
 	setTotalBooksCount,
 	setCurrentBook,
+	fetchBooksSuccess,
+	fetchBooksFailure,
 } from 'reducers/books'
 import {PayloadAction} from '@reduxjs/toolkit'
 
 function* fetchBooksWorker(action: PayloadAction<string>) {
-	const data: BookItemType[] = yield call(bookApi.getBooks, action.payload)
-	const count: number = yield call(bookApi.getTotalBooksCount)
-	yield put(initializeBooks(data))
-	yield put(setTotalBooksCount(count))
+	try {
+		const data: BookItemType[] = yield call(bookApi.getBooks, action.payload)
+		const count: number = yield call(bookApi.getTotalBooksCount)
+		yield put(fetchBooksSuccess(data))
+		yield put(setTotalBooksCount(count))
+	} catch (error: any) {
+		yield put(fetchBooksFailure(error.message || 'An unknown error occurred'))
+	}
 }
 
 function* fetchBookWorker(action: PayloadAction<string>) {

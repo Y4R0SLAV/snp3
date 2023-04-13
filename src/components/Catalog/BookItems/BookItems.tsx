@@ -1,20 +1,21 @@
+import {BookError} from './BookError/BookError'
 import {BookItem} from './BookItem/BookItem'
 import s from './BookItems.module.css'
 import {useSelector} from 'react-redux'
-import {selectBooks, selectTotalBooksCount} from 'reducers/books'
+import {selectBooks, selectErrorMessage, selectTotalBooksCount} from 'reducers/books'
 
 export const BookItems = () => {
 	const filteredBooks = useSelector(selectBooks)
 	const totalBooksCount = useSelector(selectTotalBooksCount)
+	const errorMessage = useSelector(selectErrorMessage)
 
 	return (
 		<div className={s.Root}>
-			{filteredBooks.length === 0 &&
-				(totalBooksCount > 0 ? (
-					<div className={s.warning}>Nothing was found for your query.</div>
-				) : (
-					<div className={s.warning}>There are no books in the catalog here yet.</div>
-				))}
+			<BookError
+				currentBooksCount={filteredBooks.length}
+				totalCount={totalBooksCount}
+				errorMessage={errorMessage}
+			/>
 
 			{filteredBooks.map((book) => (
 				<BookItem
