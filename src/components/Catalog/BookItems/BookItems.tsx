@@ -11,10 +11,6 @@ export const BookItems = () => {
 	const totalBooksCount = useSelector(selectTotalBooksCount)
 	const booksIsPending = useSelector(selectBooksIsPending)
 
-	useEffect(() => {
-		setFilteredBooks(getFilteredBooks(books, query, query, 'authorOrTitle'))
-	}, [books, query])
-
 	return (
 		<div className={s.Root}>
 			<BookError
