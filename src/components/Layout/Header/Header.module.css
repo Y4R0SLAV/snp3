@@ -1,0 +1,10 @@
+.Root {
+	border: 1px solid var(--header-border-color);
+	padding: 20px;
+	font-size: 26px;
+}
+
+.Root a {
+	text-decoration: none;
+	color: var(--header-content-color);
+}

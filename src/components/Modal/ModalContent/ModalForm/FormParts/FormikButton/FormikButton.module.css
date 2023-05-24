@@ -1,0 +1,14 @@
+.Root {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin: var(--button-negative-padding);
+	padding: var(--button-padding);
+	/* margin+padding чтобы высота/ширина Button из common совпала со стоковой кнопкой */
+}

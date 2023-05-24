@@ -1,0 +1,15 @@
+.Root {
+	border: 1px dashed var(--catalog-border-color);
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.content {
+	max-width: 1024px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 10px;
+}

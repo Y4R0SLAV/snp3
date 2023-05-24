@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
-}
+:root {
+	--button-border-color: rgb(3, 72, 3);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+	--button-main-color: rgb(3, 72, 3);
+	--button-main-background: #fff;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+	--button-hover-color: rgb(11, 120, 11);
+	--button-hover-background: #e9e9c0;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+	--button-padding: 5px;
+	--button-negative-padding: -5px;
 
-.App-link {
-  color: #61dafb;
-}
+	--modal-border-color: rgb(119, 31, 31);
+	--modal-content-color: red;
+	--modal-close-button-color: red;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	--input-border-color: #f4f0e9;
+	--input-background-color: #f9f7f4;
+
+	--warning-color: red;
+
+	--header-border-color: red;
+	--header-content-color: #4a4a4a;
+
+	--catalog-border-color: yellowgreen;
+
+	--footer-content-color: #4a4a4a;
+
+	--book-border-color: #eee;
+	--book-title-color: #4a4a4a;
+	--book-hover-title-color: #694724;
 }
