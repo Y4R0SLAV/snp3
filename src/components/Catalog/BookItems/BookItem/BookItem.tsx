@@ -5,7 +5,17 @@ import {ShowingButton} from './Buttons/ShowingButton'
 import {EditingButton} from './Buttons/EditingButton'
 
 import {Link} from 'react-router-dom'
-import {BookItemType} from 'reducers/books'
+
+export interface BookItemType {
+	id: number
+	title: string
+	author: string
+	imgSrc: string
+	ISBN: string
+	publishYear: number
+	publisher: string
+	description: string
+}
 
 export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 	id,

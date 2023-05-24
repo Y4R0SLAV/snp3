@@ -4,13 +4,13 @@ import {
 	addBook,
 	removeBook,
 	editBook,
-	BookItemType,
 	setTotalBooksCount,
 	fetchBookSuccess,
 	fetchBookFailure,
 	fetchBooksSuccess,
 	fetchBooksFailure,
 } from 'reducers/books'
+import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 import {PayloadAction} from '@reduxjs/toolkit'
 import {toast} from 'react-hot-toast'
 

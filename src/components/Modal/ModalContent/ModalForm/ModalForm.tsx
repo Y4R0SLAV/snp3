@@ -7,15 +7,14 @@ import {
 	asyncRemoveBook,
 	asyncEditBook,
 	toggleModalWindow,
-	BookItemType,
 	selectBookIsPending,
 } from 'reducers/books'
+import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 import {BlockBox} from './FormParts/BlockBox/BlockBox'
 import {FormikCustomInput} from './FormParts/FormikInput/FormikInput'
 import {FormikCustomTextarea} from './FormParts/FormikTextarea/FormikTextarea'
 import {FormikButton} from './FormParts/FormikButton/FormikButton'
-
 import s from './ModalForm.module.css'
 import {getCurrentYear} from 'src/utils/functions'
 import Preloader from 'src/components/common/Preloader/Preloader'

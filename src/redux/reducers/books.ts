@@ -2,17 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
 import {ModalType, addingType} from './types'
-
-export interface BookItemType {
-	id: number
-	title: string
-	author: string
-	imgSrc: string
-	ISBN: string
-	publishYear: number
-	publisher: string
-	description: string
-}
+import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 interface BooksState {
 	books: Array<BookItemType>
@@ -92,7 +82,7 @@ export const booksSlice = createSlice({
 			state.errorMessage = action.payload
 			state.booksIsPending = false
 		},
-		
+
 		fetchBookSuccess: (state, action: PayloadAction<BookItemType>) => {
 			state.currentBook = action.payload
 			state.bookIsPending = false

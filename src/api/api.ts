@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {BookItemType} from 'reducers/books'
+import {BookItemType} from 'src/components/Catalog/BookItems/BookItem/BookItem'
 
 const instance = axios.create({
 	baseURL: `https://json-server-two-gilt.vercel.app/books`,
