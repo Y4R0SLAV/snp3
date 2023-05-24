@@ -1,9 +1,15 @@
 import s from './BookShowcase.module.css'
-import {selectBook} from 'reducers/books'
+import {selectBook, selectBookIsPending} from 'reducers/books'
 import {useSelector} from 'react-redux'
+import Preloader from 'src/components/common/Preloader/Preloader'
 
 export const BookShowcase = () => {
 	const book = useSelector(selectBook)
+	const bookIsPending = useSelector(selectBookIsPending)
+
+	if (bookIsPending) {
+		return <Preloader />
+	}
 
 	if (book) {
 		return (

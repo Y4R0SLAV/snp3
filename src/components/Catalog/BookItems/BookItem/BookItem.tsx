@@ -5,17 +5,7 @@ import {ShowingButton} from './Buttons/ShowingButton'
 import {EditingButton} from './Buttons/EditingButton'
 
 import {Link} from 'react-router-dom'
-
-export type BookItemType = {
-	id: number
-	title: string
-	author: string
-	imgSrc: string
-	ISBN: string
-	publishYear: number
-	publisher: string
-	description: string
-}
+import {BookItemType} from 'reducers/books'
 
 export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 	id,

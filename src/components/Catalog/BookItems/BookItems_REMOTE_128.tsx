@@ -5,8 +5,6 @@ import {useSelector} from 'react-redux'
 import {selectBooks, selectBooksIsPending, selectTotalBooksCount} from 'reducers/books'
 
 import s from './BookItems.module.css'
-import {useSelector, useDispatch} from 'react-redux'
-import { selectBooks, selectStr} from 'reducers/books'
 
 export const BookItems = () => {
 	const filteredBooks = useSelector(selectBooks)

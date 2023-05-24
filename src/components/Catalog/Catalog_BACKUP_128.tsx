@@ -3,8 +3,12 @@ import {AddBookButton} from './AddBookButton/AddBookButton'
 import {BookItems} from './BookItems/BookItems'
 import s from './Catalog.module.css'
 import {SearchInput} from './SearchInput/SearchInput'
+<<<<<<< HEAD
+
+=======
 import {fetchBooks, selectSearchQuery} from 'reducers/books'
 import {useDispatch, useSelector} from 'react-redux'
+>>>>>>> feature/5_json_server
 export const Catalog = () => {
 	const dispatch = useDispatch()
 	const query = useSelector(selectSearchQuery)
