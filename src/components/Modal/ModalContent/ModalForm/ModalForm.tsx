@@ -1,17 +1,23 @@
 import {useState} from 'react'
 import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {
+	asyncAddBook,
+	asyncRemoveBook,
+	asyncEditBook,
+	toggleModalWindow,
+	selectBookIsPending,
+} from 'reducers/books'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
-import {addBook, editBook, removeBook, toggleModalWindow} from 'reducers/books'
 
 import {BlockBox} from './FormParts/BlockBox/BlockBox'
 import {FormikCustomInput} from './FormParts/FormikInput/FormikInput'
 import {FormikCustomTextarea} from './FormParts/FormikTextarea/FormikTextarea'
 import {FormikButton} from './FormParts/FormikButton/FormikButton'
-
 import s from './ModalForm.module.css'
 import {getCurrentYear} from 'src/utils/functions'
+import Preloader from 'src/components/common/Preloader/Preloader'
 
 const SignupSchema = Yup.object().shape({
 	ISBN: Yup.string().matches(/^[0-9]+$/, 'Invalid ISBN-13: Must be only digits'),
@@ -41,6 +47,11 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 	type submitButtonType = 'add' | 'remove' | 'save'
 	const [submitButtonState, setSubmitButtonState] = useState<submitButtonType>('add')
 
+	const bookIsPending = useSelector(selectBookIsPending)
+	if (bookIsPending) {
+		return <Preloader />
+	}
+
 	let formValue = {
 		title: '',
 		author: '',
@@ -62,7 +73,7 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 		setSubmitButtonState('save')
 	}
 	const removeHandler = () => {
-		dispatch(removeBook(initialValue?.id || -1))
+		dispatch(asyncRemoveBook(initialValue?.id || -1))
 		dispatch(toggleModalWindow())
 	}
 
@@ -74,12 +85,12 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 			onSubmit={(values, {resetForm}) => {
 				switch (submitButtonState) {
 					case 'add':
-						dispatch(addBook(values))
+						dispatch(asyncAddBook(values))
 						break
 					case 'save':
 						// id всегда будет, т.к. если я попал в editMode, то точно передал initialState
 						const newBook = {...values, id: initialValue?.id || -1}
-						dispatch(editBook(newBook))
+						dispatch(asyncEditBook(newBook))
 						break
 					default:
 						break

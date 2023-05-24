@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 import {selectModalType, selectBook} from 'reducers/books'
 import {addingType, showingType, redactoringType} from 'reducers/types'
 import {ModalForm} from './ModalForm/ModalForm'
-import {BookShowcase} from './../../Catalog/BookShowcase/BookShowcase'
+import {BookShowcase} from 'src/components/Catalog/BookShowcase/BookShowcase'
 import {exhaustiveCheck} from 'src/utils/functions'
 
 export const ModalContent = () => {
