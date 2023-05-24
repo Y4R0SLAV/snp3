@@ -28,9 +28,8 @@ export const BookItem: FC<BookItemType & {format: 'icon' | 'full'}> = ({
 	description,
 	format,
 }) => {
-	const toPage = '/items/' + id
-	// full - личная страничка для каждой книги, icon же - то что в каталоге
-	// неиспользуемые пропсы не используются только для первого задания
+	const toPage = `/items/${id}`
+	// full - личная страничка для каждой книги, icon для того, что отображается в каталоге
 	if (format === 'icon') {
 		return (
 			<div className={s.Root}>

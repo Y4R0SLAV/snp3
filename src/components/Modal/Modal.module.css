@@ -21,9 +21,12 @@
 	background: #fff;
 	width: 70vw;
 	max-height: 99vh;
-	overflow-y: scroll;
 
 	position: relative;
+}
+
+.content form {
+	overflow-y: scroll;
 }
 
 @media (max-width: 1140px) {

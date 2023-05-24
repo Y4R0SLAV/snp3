@@ -17,7 +17,7 @@ import {FormikCustomTextarea} from './FormParts/FormikTextarea/FormikTextarea'
 import {FormikButton} from './FormParts/FormikButton/FormikButton'
 import s from './ModalForm.module.css'
 import {getCurrentYear} from 'src/utils/functions'
-import Preloader from 'src/components/common/Preloader/Preloader'
+import {PreloaderBlock} from 'src/components/common/Preloader/Preloader'
 
 const SignupSchema = Yup.object().shape({
 	ISBN: Yup.string().matches(/^[0-9]+$/, 'Invalid ISBN-13: Must be only digits'),
@@ -49,7 +49,7 @@ export const ModalForm: React.FC<{initialValue?: BookItemType; editing?: boolean
 
 	const bookIsPending = useSelector(selectBookIsPending)
 	if (bookIsPending) {
-		return <Preloader />
+		return <PreloaderBlock />
 	}
 
 	let formValue = {

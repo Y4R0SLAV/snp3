@@ -1,8 +1,8 @@
-import Preloader from 'src/components/common/Preloader/Preloader'
+import {Preloader} from 'src/components/common/Preloader/Preloader'
 
 import s from './BookError.module.css'
-import { useSelector } from 'react-redux'
-import { selectErrorMessage } from 'reducers/books'
+import {useSelector} from 'react-redux'
+import {selectErrorMessage} from 'reducers/books'
 
 type BookErrorType = {
 	currentBooksCount: number
@@ -10,11 +10,7 @@ type BookErrorType = {
 	isPending: boolean
 }
 
-export const BookError: React.FC<BookErrorType> = ({
-	currentBooksCount,
-	totalCount,
-	isPending,
-}) => {
+export const BookError: React.FC<BookErrorType> = ({currentBooksCount, totalCount, isPending}) => {
 	const errorMessage = useSelector(selectErrorMessage)
 	let returnMessage = ''
 

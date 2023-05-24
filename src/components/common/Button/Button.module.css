@@ -12,7 +12,7 @@
 	padding: var(--button-padding);
 
 	transition: all 0.3s ease-in-out;
-	min-width: 80px;
+	min-width: 70px;
 }
 
 .Root:hover {

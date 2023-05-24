@@ -1,32 +1,45 @@
-:root {
-	--button-border-color: rgb(3, 72, 3);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
-	--button-main-color: rgb(3, 72, 3);
+:root {
+	--button-border-color: #368a6d;
+
+	--button-main-color: #368a6d;
 	--button-main-background: #fff;
 
-	--button-hover-color: rgb(11, 120, 11);
-	--button-hover-background: #e9e9c0;
+	--button-hover-color: #368a6d;
+	--button-hover-background: #effcf2;
 
 	--button-padding: 5px;
 	--button-negative-padding: -5px;
 
 	--modal-border-color: rgb(119, 31, 31);
-	--modal-content-color: red;
+	--modal-content-color: #8c667c;
 	--modal-close-button-color: red;
+	--modal-title-color: #8c667c;
 
 	--input-border-color: #f4f0e9;
 	--input-background-color: #f9f7f4;
 
 	--warning-color: red;
 
-	--header-border-color: red;
-	--header-content-color: #4a4a4a;
+	--header-border-color: #9f9f9f;
+	/* --header-content-color: #4a4a4a; */
+	--header-content-color: #8c667c;
+	--header-bg-color: #ffeee6;
 
-	--catalog-border-color: yellowgreen;
+	--catalog-border-color: white;
+	--catalog-bg-color: white;
+	/* --catalog-bg-color: #ffeee6; */
 
-	--footer-content-color: #4a4a4a;
+	--footer-content-color: #8c667c;
+	/* --footer-bg-color: #2b0f42; крутой фиолетовый*/
+	--footer-bg-color: #ffeee6;
 
 	--book-border-color: #eee;
-	--book-title-color: #4a4a4a;
-	--book-hover-title-color: #694724;
+	--book-title-color: #2c293d;
+	--book-hover-title-color: #4e4b5f;
 }

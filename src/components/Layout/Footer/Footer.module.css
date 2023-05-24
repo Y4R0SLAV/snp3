@@ -3,4 +3,5 @@
 	color: var(--footer-content-color);
 	display: flex;
 	justify-content: center;
+	background: var(--footer-bg-color);
 }

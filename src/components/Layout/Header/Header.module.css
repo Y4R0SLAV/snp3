@@ -1,6 +1,6 @@
 .Root {
-	border: 1px solid var(--header-border-color);
-	padding: 20px;
+	background: var(--header-bg-color);
+	padding: 15px 25px;
 	font-size: 26px;
 }
 

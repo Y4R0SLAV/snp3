@@ -1,14 +1,14 @@
 import s from './BookShowcase.module.css'
 import {selectBook, selectBookIsPending} from 'reducers/books'
 import {useSelector} from 'react-redux'
-import Preloader from 'src/components/common/Preloader/Preloader'
+import {PreloaderBlock} from 'src/components/common/Preloader/Preloader'
 
 export const BookShowcase = () => {
 	const book = useSelector(selectBook)
 	const bookIsPending = useSelector(selectBookIsPending)
 
 	if (bookIsPending) {
-		return <Preloader />
+		return <PreloaderBlock />
 	}
 
 	if (book) {
@@ -26,6 +26,7 @@ export const BookShowcase = () => {
 					<div>ISBN-13: {book.ISBN}</div>
 					<div>Published in: {book.publishYear}</div>
 					<div>Published by: {book.publisher}</div>
+					<div className={s.line} />
 					<div>Description: {book.description}</div>
 				</div>
 			</div>

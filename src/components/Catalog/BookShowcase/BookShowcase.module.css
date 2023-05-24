@@ -19,12 +19,20 @@
 
 .info {
 	font-size: 24px;
+	padding: 7px;
 }
 
 .info div {
 	margin-bottom: 5px;
 	color: var(--modal-content-color);
 	overflow-wrap: break-word;
+}
+
+.line {
+	margin: 10px auto;
+	height: 7px;
+	width: 95%;
+	border-top: 1px solid var(--modal-content-color);
 }
 
 @media (max-width: 1440px) {

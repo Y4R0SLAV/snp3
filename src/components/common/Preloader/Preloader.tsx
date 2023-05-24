@@ -1,6 +1,6 @@
 import s from './Preloader.module.css'
 
-const Preloader = () => {
+export const Preloader = () => {
 	return (
 		<div className={s.Root}>
 			<img
@@ -11,4 +11,7 @@ const Preloader = () => {
 	)
 }
 
-export default Preloader
+export const PreloaderBlock = () => {
+	return <div className={s.center}><Preloader /></div>
+}
+

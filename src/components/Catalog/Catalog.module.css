@@ -1,5 +1,6 @@
 .Root {
 	border: 1px dashed var(--catalog-border-color);
+	background: var(--catalog-bg-color);
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
