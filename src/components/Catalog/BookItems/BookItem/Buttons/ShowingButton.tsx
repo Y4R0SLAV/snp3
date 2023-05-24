@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux'
-import {setCurrentBook, setModalType, toggleModalWindow} from 'reducers/books'
+import {fetchBook, setModalType, toggleModalWindow} from 'reducers/books'
 import {showingType} from 'reducers/types'
 import {Button} from 'common/Button/Button'
 
@@ -9,9 +9,9 @@ export const ShowingButton: React.FC<{id: number}> = ({id}) => {
 	const dispatch = useDispatch()
 
 	const clickHandler = () => {
+		dispatch(fetchBook(id.toString()))
 		dispatch(setModalType(showingType))
 		dispatch(toggleModalWindow())
-		dispatch(setCurrentBook(id))
 	}
 
 	return (

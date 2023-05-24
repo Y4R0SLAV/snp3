@@ -1,12 +1,15 @@
 import {useDispatch, useSelector} from 'react-redux'
-
-import {Footer} from './components/Footer/Footer'
-import {Header} from './components/Header/Header'
+import {Layout} from './components/Layout/Layout'
 import {Catalog} from './components/Catalog/Catalog'
 import {selectShowModal, toggleModalWindow} from 'reducers/books'
 
 import {Modal} from './components/Modal/Modal'
 import {ModalContent} from './components/Modal/ModalContent/ModalContent'
+
+import {BookItemPage} from './components/BookItemPage/BookItemPage'
+
+import {Routes} from 'react-router'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import './App.css'
 // в App.css глобальные переменные
@@ -20,7 +23,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<Router>
 			<Modal
 				isVisible={show}
 				onClose={toggleModal}
@@ -28,10 +31,19 @@ function App() {
 				<ModalContent />
 			</Modal>
 
-			<Header />
-			<Catalog />
-			<Footer />
-		</div>
+			<Layout>
+				<Routes>
+					<Route
+						path='/'
+						element={<Catalog />}
+					/>
+					<Route
+						path='/items/:id'
+						element={<BookItemPage />}
+					/>
+				</Routes>
+			</Layout>
+		</Router>
 	)
 }
 
