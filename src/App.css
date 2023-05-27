@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 
-:root {
+html[data-theme='light'] {
 	--button-border-color: #368a6d;
 
 	--button-main-color: #368a6d;
@@ -12,6 +12,49 @@
 
 	--button-hover-color: #368a6d;
 	--button-hover-background: #effcf2;
+
+	--button-active-background: #dadbcc;
+
+	--button-padding: 5px;
+	--button-negative-padding: -5px;
+
+	--modal-border-color: rgb(119, 31, 31);
+	--modal-content-color: #8c667c;
+	--modal-close-button-color: red;
+	--modal-title-color: #8c667c;
+
+	--input-border-color: #f4f0e9;
+	--input-background-color: #f9f7f4;
+
+	--warning-color: red;
+
+	--header-border-color: #9f9f9f;
+	/* --header-content-color: #4a4a4a; */
+	--header-content-color: #8c667c;
+	--header-bg-color: #ffeee6;
+
+	--catalog-border-color: white;
+	--catalog-bg-color: white;
+	/* --catalog-bg-color: #ffeee6; */
+
+	--footer-content-color: #8c667c;
+	/* --footer-bg-color: #2b0f42; крутой фиолетовый*/
+	--footer-bg-color: #ffeee6;
+
+	--book-border-color: #eee;
+	--book-title-color: #2c293d;
+	--book-hover-title-color: #4e4b5f;
+}
+
+html[data-theme='dark'] {
+	--button-border-color: red;
+	--button-main-color: red;
+	--button-main-background: red;
+
+	--button-hover-color: red;
+	--button-hover-background: red;
+
+	--button-active-background: red;
 
 	--button-padding: 5px;
 	--button-negative-padding: -5px;

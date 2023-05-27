@@ -1,0 +1,26 @@
+.Root {
+	display: flex;
+}
+
+.button {
+	background: #fff2ec;
+	border-radius: 0;
+}
+
+.button1 {
+	border-radius: 8px 0 0 8px;
+}
+
+.button2 {
+	border-radius: 0 8px 8px 0;
+}
+
+.button:hover {
+	background: var(--button-hover-background);
+	color: var(--button-hover-color);
+}
+
+.button:active {
+	background: var(--button-active-background);
+	transition: 0.2s;
+}
