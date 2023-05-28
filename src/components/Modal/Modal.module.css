@@ -18,15 +18,11 @@
 
 .content {
 	border: 2px solid var(--modal-border-color);
-	background: #fff;
+	background: var(--content-bg-color);
 	width: 70vw;
 	max-height: 99vh;
 
 	position: relative;
-}
-
-.content form {
-	overflow-y: scroll;
 }
 
 @media (max-width: 1140px) {

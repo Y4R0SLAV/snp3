@@ -1,3 +1,8 @@
+.Root {
+	background: var(--content-bg-color);
+	transition: background 0.2s ease-in-out;
+}
+
 .content {
 	min-height: calc(100vh - 100px);
 }

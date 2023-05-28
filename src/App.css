@@ -29,13 +29,10 @@ html[data-theme='light'] {
 	--warning-color: red;
 
 	--header-border-color: #9f9f9f;
-	/* --header-content-color: #4a4a4a; */
 	--header-content-color: #8c667c;
 	--header-bg-color: #ffeee6;
 
-	--catalog-border-color: white;
-	--catalog-bg-color: white;
-	/* --catalog-bg-color: #ffeee6; */
+	--content-bg-color: white;
 
 	--footer-content-color: #8c667c;
 	/* --footer-bg-color: #2b0f42; крутой фиолетовый*/
@@ -47,40 +44,36 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-	--button-border-color: red;
-	--button-main-color: red;
-	--button-main-background: red;
+	--button-border-color: #4e005c;
+	--button-main-color: #4e005c;
 
-	--button-hover-color: red;
-	--button-hover-background: red;
+	--button-hover-color: #0a0c1f;
+	--button-hover-background: #bc557d;
 
-	--button-active-background: red;
+	--button-active-background: #bc557d;
 
 	--button-padding: 5px;
 	--button-negative-padding: -5px;
 
 	--modal-border-color: rgb(119, 31, 31);
 	--modal-content-color: #8c667c;
-	--modal-close-button-color: red;
+	--modal-close-button-color: #4e005c;
 	--modal-title-color: #8c667c;
 
 	--input-border-color: #f4f0e9;
 	--input-background-color: #f9f7f4;
 
-	--warning-color: red;
+	--warning-color: #4e005c;
 
 	--header-border-color: #9f9f9f;
-	/* --header-content-color: #4a4a4a; */
-	--header-content-color: #8c667c;
-	--header-bg-color: #ffeee6;
+	--header-content-color: #0a0c1f;
+	--header-bg-color: #914848;
 
-	--catalog-border-color: white;
-	--catalog-bg-color: white;
-	/* --catalog-bg-color: #ffeee6; */
+	--content-bg-color: #dfdfdf;
 
-	--footer-content-color: #8c667c;
+	--footer-content-color: #0a0c1f;
 	/* --footer-bg-color: #2b0f42; крутой фиолетовый*/
-	--footer-bg-color: #ffeee6;
+	--footer-bg-color: #914848;
 
 	--book-border-color: #eee;
 	--book-title-color: #2c293d;
