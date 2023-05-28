@@ -23,6 +23,7 @@
 	max-height: 99vh;
 
 	position: relative;
+	overflow: auto;
 }
 
 @media (max-width: 1140px) {

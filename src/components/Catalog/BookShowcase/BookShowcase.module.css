@@ -25,7 +25,6 @@
 .info div {
 	margin-bottom: 5px;
 	color: var(--modal-content-color);
-	overflow-wrap: break-word;
 }
 
 .line {

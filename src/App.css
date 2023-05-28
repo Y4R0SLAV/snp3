@@ -18,6 +18,8 @@ html[data-theme='light'] {
 	--button-padding: 5px;
 	--button-negative-padding: -5px;
 
+	--button-theme-bg: #fff2ec;
+
 	--modal-border-color: rgb(119, 31, 31);
 	--modal-content-color: #8c667c;
 	--modal-close-button-color: red;
@@ -35,7 +37,6 @@ html[data-theme='light'] {
 	--content-bg-color: white;
 
 	--footer-content-color: #8c667c;
-	/* --footer-bg-color: #2b0f42; крутой фиолетовый*/
 	--footer-bg-color: #ffeee6;
 
 	--book-border-color: #eee;
