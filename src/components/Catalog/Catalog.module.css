@@ -1,14 +1,17 @@
 .Root {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .content {
 	max-width: 1024px;
+	padding-top: 10px;
+
+	min-height: calc(100vh - 100px);
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	padding-top: 10px;
 }
