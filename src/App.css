@@ -18,7 +18,7 @@ html[data-theme='light'] {
 	--button-padding: 5px;
 	--button-negative-padding: -5px;
 
-	--button-theme-bg: #fff2ec;
+	--theme-bg: #fff2ec;
 
 	--modal-border-color: rgb(119, 31, 31);
 	--modal-content-color: #8c667c;
@@ -55,6 +55,8 @@ html[data-theme='dark'] {
 
 	--button-padding: 5px;
 	--button-negative-padding: -5px;
+
+	--theme-bg: #ecc;
 
 	--modal-border-color: rgb(119, 31, 31);
 	--modal-content-color: #8c667c;
