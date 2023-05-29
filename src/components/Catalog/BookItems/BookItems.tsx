@@ -2,7 +2,8 @@ import {BookError} from './BookError/BookError'
 import {BookItem} from './BookItem/BookItem'
 import {Toaster} from 'react-hot-toast'
 import {useSelector} from 'react-redux'
-import {selectBooks, selectBooksIsPending, selectTotalBooksCount} from 'reducers/books'
+import {selectBooks, selectBooksIsPending} from 'reducers/books'
+import {selectTotalBooksCount} from 'reducers/app'
 
 import s from './BookItems.module.css'
 
@@ -19,20 +20,21 @@ export const BookItems = () => {
 				isPending={booksIsPending}
 			/>
 
-			{filteredBooks.map((book) => (
-				<BookItem
-					key={book.id}
-					title={book.title}
-					id={book.id}
-					ISBN={book.ISBN}
-					author={book.author}
-					description={book.description}
-					imgSrc={book.imgSrc}
-					publishYear={book.publishYear}
-					publisher={book.publisher}
-					format='icon'
-				/>
-			))}
+			{!booksIsPending &&
+				filteredBooks.map((book) => (
+					<BookItem
+						key={book.id}
+						title={book.title}
+						id={book.id}
+						ISBN={book.ISBN}
+						author={book.author}
+						description={book.description}
+						imgSrc={book.imgSrc}
+						publishYear={book.publishYear}
+						publisher={book.publisher}
+						format='icon'
+					/>
+				))}
 			<Toaster
 				position='top-center'
 				reverseOrder={true}

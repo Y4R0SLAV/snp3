@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux'
-import {setModalType, toggleModalWindow} from 'reducers/books'
+import {setModalType, toggleModalWindow} from 'reducers/app'
 import {addingType} from 'reducers/types'
 import {Button} from 'common/Button/Button'
 

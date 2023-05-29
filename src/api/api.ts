@@ -6,18 +6,20 @@ const instance = axios.create({
 })
 
 export const bookApi = {
-	async getBooks(query?: string) {
-		return instance.get<BookItemType[]>(`?q=${query}`).then((response) => {
-			return response.data
-		})
+	async getBooks(payload: {query: string; page: number; pageSize: number}) {
+		return instance
+			.get<BookItemType[]>(`?q=${payload.query}&_page=${payload.page}&_limit=${payload.pageSize}`)
+			.then((response) => {
+				return response.data
+			})
 	},
 	async getBook(id: string) {
 		return instance.get<BookItemType>(`/${id}`).then((response) => {
 			return response.data
 		})
 	},
-	async getTotalBooksCount() {
-		return instance.get<BookItemType[]>('').then((response) => {
+	async getTotalBooksCount(query: string) {
+		return instance.get<BookItemType[]>(`?q=${query}`).then((response) => {
 			return response.data.length
 		})
 	},

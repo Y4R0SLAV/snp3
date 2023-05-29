@@ -3,10 +3,12 @@
 	justify-content: center;
 	gap: 7px;
 
-	min-width: 81%;
+	min-width: 350px;
 	margin: 25px 0;
 
 	color: var(--header-content-color);
+
+	position: relative;
 }
 
 .Root a {
@@ -14,3 +16,35 @@
 
 	color: var(--header-content-color);
 }
+
+.pages {
+	display: flex;
+	justify-content: space-between;
+	gap: 5px;
+}
+.pages .active {
+	transform: scale(1.1);
+	position: relative;
+	bottom: 1px;
+}
+
+.linkBlock {
+	position: relative;
+}
+
+.hide {
+	opacity: 0;
+}
+/* 
+.linkBlock {
+	border: 1px solid green;
+	position: absolute;
+}
+
+.leftBlock {
+	left: 50px;
+}
+
+.rightBlock {
+	right: 50px;
+} */

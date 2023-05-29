@@ -1,18 +1,41 @@
-import {Link} from 'react-router-dom'
+import {FC, useEffect} from 'react'
+import {Link, useParams} from 'react-router-dom'
+
+import {useDispatch, useSelector} from 'react-redux'
+import {
+	selectCurrentPage,
+	selectPageSize,
+	selectTotalBooksCount,
+	setCurrentPage,
+} from 'reducers/app'
+import classNames from 'classnames/bind'
+
 import s from './Paginator.module.css'
 
-const PrevBlock: React.FC<{prev: number; first: number; url: string}> = ({prev, first, url}) => {
+const PrevBlock: FC<{prev: number; firstUrl: string; url: string; show: boolean}> = ({
+	prev,
+	firstUrl,
+	url,
+	show,
+}) => {
+	const cn = classNames.bind(s)
 	return (
-		<div className={s.linkBlock}>
-			<Link to={url + first}>{'« First'}</Link>
-			<Link to={url + prev}>{' ‹ Prev'}</Link>
+		<div className={cn({linkBlock: true, hide: !show})}>
+			<Link to={firstUrl}>{'« First'}</Link>
+			<Link to={prev === 1 ? firstUrl : url + prev}>{' ‹ Prev'}</Link>
 		</div>
 	)
 }
 
-const NextBlock: React.FC<{next: number; last: number; url: string}> = ({next, last, url}) => {
+const NextBlock: FC<{next: number; last: number; url: string; show: boolean}> = ({
+	next,
+	last,
+	url,
+	show,
+}) => {
+	const cn = classNames.bind(s)
 	return (
-		<div className={s.linkBlock}>
+		<div className={cn({linkBlock: true, hide: !show})}>
 			<Link to={url + next}>{'Next ›'}</Link>
 			<Link to={url + last}>{' Last »'}</Link>
 		</div>
@@ -20,13 +43,28 @@ const NextBlock: React.FC<{next: number; last: number; url: string}> = ({next, l
 }
 
 export const NavPaginator = () => {
-	const currentPage = 2
-	const totalPage = 10
+	const dispatch = useDispatch()
+
+	const params = useParams()
+	const pageString = params.pageNum || 1
+	const pageNum = +pageString
+
+	const totalBooksCount = useSelector(selectTotalBooksCount)
+	const bookPerPage = useSelector(selectPageSize)
+	const totalPage = totalBooksCount / bookPerPage
+
+	const url = '/page/'
+	const firstUrl = '..'
+
+	useEffect(() => {
+		dispatch(setCurrentPage(+pageNum))
+	}, [pageNum, dispatch])
 
 	const pageNums = []
-	const url = '?search='
+
+	// инициализация массива кнопок-страниц
 	for (let i = -4; i < 5; i++) {
-		let num = currentPage + i
+		let num = pageNum + i
 		if (num >= 1 && num <= totalPage) {
 			pageNums.push(num)
 		}
@@ -35,29 +73,36 @@ export const NavPaginator = () => {
 	const min = pageNums[0]
 	const max = pageNums[pageNums.length - 1]
 
+	const cn = classNames.bind(s)
 	return (
 		<div className={s.Root}>
-			{currentPage > 1 && (
-				<PrevBlock
-					prev={currentPage - 1}
-					first={1}
-					url={url}
-				/>
-			)}
+			<PrevBlock
+				prev={pageNum - 1}
+				firstUrl={firstUrl}
+				url={url}
+				show={pageNum > 1}
+			/>
 			{min > 1 && '...'}
 
-			{pageNums.map((i) => (
-				<Link to={url + i}> {i} </Link>
-			))}
+			<div className={s.pages}>
+				{pageNums.map((i) => (
+					<Link
+						to={i === 1 ? firstUrl : url + i}
+						key={i}
+						className={cn({active: i === pageNum})}
+					>
+						{i}
+					</Link>
+				))}
+			</div>
 
 			{max < totalPage && '...'}
-			{currentPage < totalPage && (
-				<NextBlock
-					next={currentPage + 1}
-					last={totalPage}
-					url={url}
-				/>
-			)}
+			<NextBlock
+				next={pageNum + 1}
+				last={totalPage}
+				url={url}
+				show={pageNum < totalPage}
+			/>
 		</div>
 	)
 }

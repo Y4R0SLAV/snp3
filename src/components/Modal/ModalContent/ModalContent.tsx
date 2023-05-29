@@ -1,6 +1,7 @@
 import s from './ModalContent.module.css'
 import {useSelector} from 'react-redux'
-import {selectModalType, selectBook} from 'reducers/books'
+import {selectBook} from 'reducers/books'
+import {selectModalType} from 'reducers/app'
 import {addingType, showingType, redactoringType} from 'reducers/types'
 import {ModalForm} from './ModalForm/ModalForm'
 import {BookShowcase} from 'src/components/Catalog/BookShowcase/BookShowcase'

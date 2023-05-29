@@ -1,16 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../store'
-import {ModalType, addingType} from './types'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 interface BooksState {
 	books: Array<BookItemType>
 	currentBook?: BookItemType
-	modalType: ModalType
-	showModal: boolean
-	searchQuery: string
-	totalBooksCount: number
 	booksIsPending: boolean
 	bookIsPending: boolean
 	errorMessage: string
@@ -19,10 +14,6 @@ interface BooksState {
 const initialState: BooksState = {
 	books: [],
 	currentBook: undefined,
-	modalType: addingType,
-	showModal: false,
-	searchQuery: '',
-	totalBooksCount: 0,
 	booksIsPending: true,
 	bookIsPending: true,
 	errorMessage: '',
@@ -52,21 +43,8 @@ export const booksSlice = createSlice({
 			state.books = [...state.books.filter((book) => book.id !== action.payload)]
 		},
 
-		setModalType: (state, action: PayloadAction<ModalType>) => {
-			state.modalType = action.payload
-		},
-
-		toggleModalWindow: (state) => {
-			state.showModal = !state.showModal
-		},
 		setCurrentBook: (state, action: PayloadAction<BookItemType>) => {
 			state.currentBook = action.payload
-		},
-		setSearchQuery: (state, action: PayloadAction<string>) => {
-			state.searchQuery = action.payload
-		},
-		setTotalBooksCount: (state, action: PayloadAction<number>) => {
-			state.totalBooksCount = action.payload
 		},
 		setBooksIsPending: (state, action: PayloadAction<boolean>) => {
 			state.booksIsPending = action.payload
@@ -94,7 +72,7 @@ export const booksSlice = createSlice({
 		},
 
 		// для redux-saga
-		fetchBooks: (state, action: PayloadAction<string>) => {
+		fetchBooks: (state, action: PayloadAction<{query: string; page: number; pageSize: number}>) => {
 			state.booksIsPending = true
 		},
 		fetchBook: (state, action: PayloadAction<string>) => {
@@ -109,13 +87,9 @@ export const booksSlice = createSlice({
 export const {
 	addBook,
 	removeBook,
-	setModalType,
-	toggleModalWindow,
 	setCurrentBook,
 	setBooksIsPending,
 	editBook,
-	setSearchQuery,
-	setTotalBooksCount,
 	fetchBooks,
 	fetchBooksSuccess,
 	fetchBooksFailure,
@@ -128,11 +102,7 @@ export const {
 } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
-export const selectModalType = (state: RootState) => state.books.modalType
-export const selectShowModal = (state: RootState) => state.books.showModal
 export const selectBook = (state: RootState) => state.books.currentBook
-export const selectSearchQuery = (state: RootState) => state.books.searchQuery
-export const selectTotalBooksCount = (state: RootState) => state.books.totalBooksCount
 export const selectBooksIsPending = (state: RootState) => state.books.booksIsPending
 export const selectBookIsPending = (state: RootState) => state.books.bookIsPending
 export const selectErrorMessage = (state: RootState) => state.books.errorMessage

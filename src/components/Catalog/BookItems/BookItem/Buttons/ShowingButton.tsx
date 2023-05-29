@@ -1,5 +1,6 @@
 import {useDispatch} from 'react-redux'
-import {fetchBook, setModalType, toggleModalWindow} from 'reducers/books'
+import {fetchBook} from 'reducers/books'
+import {setModalType, toggleModalWindow} from 'reducers/app'
 import {showingType} from 'reducers/types'
 import {Button} from 'common/Button/Button'
 

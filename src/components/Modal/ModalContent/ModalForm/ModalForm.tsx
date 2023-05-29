@@ -2,13 +2,8 @@ import {useState} from 'react'
 import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
 import {useDispatch, useSelector} from 'react-redux'
-import {
-	asyncAddBook,
-	asyncRemoveBook,
-	asyncEditBook,
-	toggleModalWindow,
-	selectBookIsPending,
-} from 'reducers/books'
+import {asyncAddBook, asyncRemoveBook, asyncEditBook, selectBookIsPending} from 'reducers/books'
+import {toggleModalWindow} from 'reducers/app'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 
 import {BlockBox} from './FormParts/BlockBox/BlockBox'

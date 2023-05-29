@@ -3,7 +3,7 @@ import {ToggleThemeMode} from 'src/components/ToggleThemeMode/ToggleThemeMode'
 
 import s from './Header.module.css'
 import {useSelector} from 'react-redux'
-import {selectSearchQuery} from 'reducers/books'
+import {selectSearchQuery} from 'reducers/app'
 
 export const Header = () => {
 	const searchQuery = useSelector(selectSearchQuery)

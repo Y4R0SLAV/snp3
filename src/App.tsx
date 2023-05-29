@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {Layout} from './components/Layout/Layout'
 import {Catalog} from './components/Catalog/Catalog'
-import {selectShowModal, toggleModalWindow} from 'reducers/books'
+import {selectShowModal, toggleModalWindow} from 'reducers/app'
 
 import {Modal} from './components/Modal/Modal'
 import {ModalContent} from './components/Modal/ModalContent/ModalContent'
@@ -35,7 +35,11 @@ function App() {
 				<Routes>
 					<Route
 						path='/'
-						element={<Catalog />}
+						element={<Catalog showButtons={true} />}
+					/>
+					<Route
+						path='/page/:pageNum'
+						element={<Catalog showButtons={false} />}
 					/>
 					<Route
 						path='/items/:id'

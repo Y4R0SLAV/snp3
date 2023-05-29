@@ -14,7 +14,7 @@ export const BookError: React.FC<BookErrorType> = ({currentBooksCount, totalCoun
 	const errorMessage = useSelector(selectErrorMessage)
 	let returnMessage = ''
 
-	if (currentBooksCount === 0 && isPending) {
+	if (isPending) {
 		return <Preloader />
 	}
 

@@ -4,20 +4,20 @@ import {
 	addBook,
 	removeBook,
 	editBook,
-	setTotalBooksCount,
 	fetchBookSuccess,
 	fetchBookFailure,
 	fetchBooksSuccess,
 	fetchBooksFailure,
 } from 'reducers/books'
+import {setTotalBooksCount} from 'reducers/app'
 import {BookItemType} from 'components/Catalog/BookItems/BookItem/BookItem'
 import {PayloadAction} from '@reduxjs/toolkit'
 import {toast} from 'react-hot-toast'
 
-function* fetchBooksWorker(action: PayloadAction<string>) {
+function* fetchBooksWorker(action: PayloadAction<{query: string; page: number; pageSize: number}>) {
 	try {
 		const data: BookItemType[] = yield call(bookApi.getBooks, action.payload)
-		const count: number = yield call(bookApi.getTotalBooksCount)
+		const count: number = yield call(bookApi.getTotalBooksCount, action.payload.query)
 		yield put(fetchBooksSuccess(data))
 		yield put(setTotalBooksCount(count))
 	} catch (error: any) {
