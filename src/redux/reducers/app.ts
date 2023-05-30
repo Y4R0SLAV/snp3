@@ -19,8 +19,8 @@ const initialState: AppState = {
 	searchQuery: '',
 
 	totalBooksCount: 0,
-	currentPage: 2,
-	pageSize: 1,
+	currentPage: 1,
+	pageSize: 8,
 }
 // book(s) is pending = true, чтобы сразу прелоадер показывать а не ждать запроса fetchBooks, он в любом случае будет вызван
 // количество книг не измяется при инициализации книг, т.к. книги инициализируются уже отфильтрованные

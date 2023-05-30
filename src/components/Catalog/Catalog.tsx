@@ -15,8 +15,12 @@ export const Catalog: React.FC<{showButtons: boolean}> = ({showButtons}) => {
 	const pageSize = useSelector(selectPageSize)
 
 	useEffect(() => {
-		dispatch(fetchBooks({query, page, pageSize}))
-	}, [dispatch, query, page, pageSize])
+		if (showButtons) {
+			dispatch(fetchBooks({query, page: 1, pageSize}))
+		} else {
+			dispatch(fetchBooks({query, page, pageSize}))
+		}
+	}, [dispatch, query, page, pageSize, showButtons])
 
 	return (
 		<div className={s.Root}>

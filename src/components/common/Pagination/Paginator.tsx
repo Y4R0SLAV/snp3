@@ -51,7 +51,7 @@ export const NavPaginator = () => {
 
 	const totalBooksCount = useSelector(selectTotalBooksCount)
 	const bookPerPage = useSelector(selectPageSize)
-	const totalPage = totalBooksCount / bookPerPage
+	const totalPage = Math.ceil(totalBooksCount / bookPerPage)
 
 	const url = '/page/'
 	const firstUrl = '..'
