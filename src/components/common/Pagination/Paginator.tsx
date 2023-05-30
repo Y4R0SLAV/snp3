@@ -2,12 +2,7 @@ import {FC, useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 
 import {useDispatch, useSelector} from 'react-redux'
-import {
-	selectCurrentPage,
-	selectPageSize,
-	selectTotalBooksCount,
-	setCurrentPage,
-} from 'reducers/app'
+import {selectPageSize, selectTotalBooksCount, setCurrentPage} from 'reducers/app'
 import classNames from 'classnames/bind'
 
 import s from './Paginator.module.css'
